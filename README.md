@@ -22,7 +22,8 @@ to [Zero Two](https://zerotwo.bot/). Silly reason, yes, I know.
 
 ## Can I host this myself?
 
-I suppose so.
+I suppose so. Just follow some instructions in the [Contributing Guidelines](CONTRIBUTING.md) to set up your own
+environment.
 
 ## Can I contribute?
 
