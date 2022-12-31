@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Discord",
+    "url": "https://discord.com"
+  },
+  {
+    "name": "Github",
+    "url": "https://github.com"
+  },
+  {
+    "name": "Node.js",
+    "url": "https://nodejs.org/en/"
+  },
+  {
+    "name": "Discord.js",
+    "url": "https://discord.js.org/#/"
+  },
+  {
+    "name": "Redis",
+    "url": "https://redis.io/"
+  },
+  {
+    "name": "Got",
+    "url": "https://github.com/sindresorhus/got"
+  },
+  {
+    "name": "Weeby.js",
+    "url": "https://js.weebyapi.xyz/"
+  },
+  {
+    "name": "He",
+    "url": "https://github.com/mathiasbynens/he"
+  },
+  {
+    "name": "Open Trivia DB",
+    "url": "https://opentdb.com/"
+  },
+  {
+    "name": "The Color API",
+    "url": "https://www.thecolorapi.com/"
+  },
+  {
+    "name": "Jikan API",
+    "url": "https://jikan.moe/"
+  },
+  {
+    "name": "Google DNS",
+    "url": "https://dns.google/"
+  },
+  {
+    "name": "Snowstamp",
+    "url": "https://snowsta.mp/"
+  },
+  {
+    "name": "Spotify Web API",
+    "url": "https://developer.spotify.com/documentation/web-api/"
+  },
+  {
+    "name": "Last.fm API",
+    "url": "https://www.last.fm/api"
+  },
+  {
+    "name": "HoroScope API",
+    "url": "https://ohmanda.com/api/horoscope/"
+  },
+  {
+    "name": "HTTP Status Cats",
+    "url": "https://http.cat/"
+  }
+]

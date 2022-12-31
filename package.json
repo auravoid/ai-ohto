@@ -1,0 +1,19 @@
+{
+  "name": "ai-ohto",
+  "version": "1.0.0",
+  "description": "Open source code for Ai Ohto. ",
+  "main": "main.js",
+  "scripts": {
+    "test": "node -r dotenv/config main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auravoid/ai-ohto.git"
+  },
+  "author": "auravoid",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/auravoid/ai-ohto/issues"
+  },
+  "homepage": "https://github.com/auravoid/ai-ohto#readme"
+}
