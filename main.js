@@ -21,8 +21,6 @@ require('./init/deploy.js').execute(client).catch();
 client.once('ready', async () => {
     console.log('AWAKEN: Hello World!');
     console.log(`AWAKEN: Loaded ${client.commands.size} commands in ${prettyDate(process.uptime())}`);
-
-    require('./init/status.js').execute(client).catch();
 });
 
 client.commands = new Collection();
