@@ -19,7 +19,7 @@
  "description": "Ai Ohto as a bot.",
  "main": "dist/bot.js",
  "author": "auravoid",
- "license": "ISC",
+ "license": "BSD-3-Clause",
  "private": true,
  "scripts": {
   "start": "ts-node -r dotenv/config -r tsconfig-paths/register src/Bot.ts",
