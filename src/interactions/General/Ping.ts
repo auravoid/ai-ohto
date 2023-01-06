@@ -1,8 +1,8 @@
 import {
     ApplicationCommandType,
+    ChatInputCommandInteraction,
     Client,
     ColorResolvable,
-    CommandInteraction,
     EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';
@@ -13,7 +13,7 @@ export const Ping: Command = {
     name: 'ping',
     description: 'Replies with some ping information.',
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: CommandInteraction) => {
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const ping = Date.now() - (interaction.createdAt as any);
         const websocketPing = Math.round(interaction.client.ws.ping);
 

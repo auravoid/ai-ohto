@@ -1,8 +1,8 @@
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
+    ChatInputCommandInteraction,
     Client,
-    CommandInteraction,
 } from 'discord.js';
 import { Command } from '@/Command';
 import Uwuifier from 'uwuifier';
@@ -19,8 +19,7 @@ export const UwU: Command = {
             required: true,
         },
     ],
-    run: async (client: Client, interaction: CommandInteraction) => {
-        // @ts-ignore
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const text = interaction.options.getString('text', true);
 
         const uwu = new Uwuifier();

@@ -1,8 +1,8 @@
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
+    ChatInputCommandInteraction,
     Client,
-    CommandInteraction,
     EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';
@@ -70,16 +70,17 @@ export const Horoscope: Command = {
             ],
         },
     ],
-    run: async (client: Client, interaction: CommandInteraction) => {
-        // @ts-ignore
-        const sign: String = interaction.options.get('sign').value;
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+        const sign = interaction.options.getString('sign');
 
         const response = await fetch(
             'https://ohmanda.com/api/horoscope/' + sign
         );
         const horoscopeData = await response.json();
 
-        const horoscopeName = sign.charAt(0).toUpperCase() + sign.slice(1);
+        const horoscopeName =
+            (sign as string).charAt(0).toUpperCase() +
+            (sign as string).slice(1);
 
         const embed = new EmbedBuilder()
             .setTitle(`Horoscope for ${horoscopeName} for today!`)

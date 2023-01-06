@@ -36,7 +36,6 @@ export function prettyDate(uglyDate: number): string {
  * @returns {string} - A Discord timestamp
  */
 export function idToTimestamp(id: number, type: string) {
-    // Make sure type matches one of the types
     if (
         ![
             'short-time',
@@ -50,16 +49,16 @@ export function idToTimestamp(id: number, type: string) {
     ) {
         throw new Error('Invalid type');
     }
-    // Make sure the ID is a number
+
     if (isNaN(id)) {
         throw new Error('ID is not a number');
     }
 
     const epoch = 1420070400000;
-    // eslint-disable-next-line no-undef
     const date = BigInt(id) >> 22n;
-    // @ts-ignore
-    const timestamp = Math.floor(new Date(Number(date) + epoch) / 1000);
+    const timestamp = Math.floor(
+        (new Date(Number(date) + epoch) as unknown as number) / 1000
+    );
 
     // Return the timestamp
     switch (type) {
@@ -117,4 +116,3 @@ export class GuildData {
         'Explicit - do not display an age gate for NSFW channels',
     ];
 }
-

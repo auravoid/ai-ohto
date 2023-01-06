@@ -1,5 +1,5 @@
-import { Client, CommandInteraction, Interaction } from 'discord.js';
-import { CommandMap } from '../Commands';
+import { Client, ChatInputCommandInteraction, Interaction } from 'discord.js';
+import { Commands } from '@/Commands';
 
 export default (client: Client): void => {
     client.on('interactionCreate', async (interaction: Interaction | any) => {
@@ -11,7 +11,7 @@ export default (client: Client): void => {
 
 const handleSlashCommand = async (
     client: Client,
-    interaction: CommandInteraction
+    interaction: ChatInputCommandInteraction
 ): Promise<void> => {
     const cmd = CommandMap[interaction.commandName];
     if (!cmd) {

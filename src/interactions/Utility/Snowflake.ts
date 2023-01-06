@@ -2,7 +2,7 @@ import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
     Client,
-    CommandInteraction,
+    ChatInputCommandInteraction,
     EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';
@@ -56,20 +56,18 @@ export const Snowflake: Command = {
             ],
         },
     ],
-    run: async (client: Client, interaction: CommandInteraction) => {
-        // @ts-ignore
-        const snowflake: number = interaction.options.getString('id');
-        // @ts-ignore
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+        const snowflake = interaction.options.getString('id');
         const format = interaction.options.getString('format');
 
-        if (isNaN(snowflake)) {
+        if (isNaN(snowflake as unknown as number)) {
             return interaction.followUp({
                 content: 'Please provide a valid snowflake ID.',
                 ephemeral: true,
             });
         }
 
-        if (snowflake < 4194304) {
+        if ((snowflake as unknown as number) < 4194304) {
             return interaction.followUp({
                 content:
                     "That doesn't look like a snowflake. Snowflakes are much larger numbers.",
@@ -77,7 +75,10 @@ export const Snowflake: Command = {
             });
         }
 
-        const date = idToTimestamp(snowflake, format ?? 'long-datetime');
+        const date = idToTimestamp(
+            snowflake as unknown as number,
+            format ?? 'long-datetime'
+        );
 
         const embed = new EmbedBuilder()
             .setTitle('Snowflake ID')

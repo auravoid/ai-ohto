@@ -2,8 +2,8 @@ import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
     Client,
-    CommandInteraction,
     EmbedBuilder,
+    ChatInputCommandInteraction,
 } from 'discord.js';
 import { Command } from '@/Command';
 import fetch from 'node-fetch-native';
@@ -42,8 +42,7 @@ export const Chat: Command = {
         },
     ],
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: CommandInteraction) => {
-        // @ts-ignore '.getString' is a valid method, but TypeScript doesn't know that. And TypeScript is dumb.
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const type = interaction.options.getString('type', true);
 
         const response = await fetch('https://api.auravoid.dev/fun/' + type);
