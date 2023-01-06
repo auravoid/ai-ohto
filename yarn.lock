@@ -475,11 +475,6 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   resolved "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
 
-owoifyx@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/owoifyx/-/owoifyx-1.0.4.tgz#ec06c340a62d7ef85cef084443d1009358cc8946"
-  integrity sha512-H84xgFzZdJQAGwuLRPAEVn8QA1XaXoLK5VdTLqvAKwnEnMa4qm8na+7y2TAZZk9Wq4ybXTcxDVBWq8E61nP5Qw==
-
 peek-readable@^5.0.0:
   version "5.0.0"
   resolved "https://registry.npmjs.org/peek-readable/-/peek-readable-5.0.0.tgz"

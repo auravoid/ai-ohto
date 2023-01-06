@@ -20,9 +20,9 @@ Basically,
 
 1. Clone the repo locally
 2. Install the dependancies
-   - `npm install`
+   - `yarn install`
 3. Change what's needed in `.env.example` and maybe rename it to `.env`
-4. Run the test command or run directly
-   - `npm run test`
-   - `node -r dotenv/config main.js`
+4. Run the dev command or run directly
+   - `yarn run dev`
+   - `nodemon -r dotenv/config -r tsconfig-paths/register src/Bot.ts`
 5. There you go!
