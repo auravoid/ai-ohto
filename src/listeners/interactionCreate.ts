@@ -1,5 +1,6 @@
-import { Client, ChatInputCommandInteraction, Interaction } from 'discord.js';
+import { Client, ChatInputCommandInteraction, Interaction, ContextMenuCommandInteraction } from 'discord.js';
 import { Commands } from '@/Commands';
+import { CommandMap } from '../Commands';
 
 export default async function handleInteraction(client: Client, interaction: Interaction) {
     if (interaction.isCommand() || interaction.isContextMenuCommand()) {
@@ -9,7 +10,7 @@ export default async function handleInteraction(client: Client, interaction: Int
 
 const handleSlashCommand = async (
     client: Client,
-    interaction: ChatInputCommandInteraction
+    interaction: ChatInputCommandInteraction | ContextMenuCommandInteraction
 ): Promise<void> => {
     const cmd = CommandMap[interaction.commandName];
     if (!cmd) {

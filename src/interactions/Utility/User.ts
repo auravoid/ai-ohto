@@ -1,16 +1,10 @@
 import { Command } from '@/Command';
-import { UserData } from "@/helpers/UserData";
 import { idToTimestamp } from '@helpers/Functions';
 import {
     ApplicationCommandOptionType,
-    ApplicationCommandType,
-    Client,
-    ColorResolvable,
-    ChatInputCommandInteraction,
-    EmbedBuilder,
+    ApplicationCommandType, ChatInputCommandInteraction, Client,
+    ColorResolvable, EmbedBuilder
 } from 'discord.js';
-import { Command } from '@/Command';
-import { idToTimestamp } from '@helpers/Functions';
 
 const { BOT_COLOR } = process.env;
 
