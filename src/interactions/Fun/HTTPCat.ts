@@ -1,8 +1,8 @@
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
+    ChatInputCommandInteraction,
     Client,
-    CommandInteraction,
     EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';
@@ -29,9 +29,8 @@ export const HTTPCat: Command = {
         },
     ],
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: CommandInteraction) => {
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const code =
-            // @ts-ignore '.getInteger' is a valid method.
             interaction.options.getInteger('code', false) ||
             httpCodes[Math.floor(Math.random() * httpCodes.length)];
 

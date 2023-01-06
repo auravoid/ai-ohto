@@ -3,7 +3,7 @@ import {
     ApplicationCommandType,
     Client,
     ColorResolvable,
-    CommandInteraction,
+    ChatInputCommandInteraction,
     EmbedBuilder,
     InviteResolvable,
 } from 'discord.js';
@@ -24,36 +24,30 @@ export const Invite: Command = {
             required: true,
         },
     ],
-    run: async (client: Client, interaction: CommandInteraction) => {
-        // @ts-ignore
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const code = interaction.options.getString('code');
 
-        // Fetch the invite
         const invite: InviteResolvable | any = await interaction.client
-            .fetchInvite(code, {
+            .fetchInvite(code as string, {
                 // @ts-ignore
                 force: true,
                 cache: false,
                 withCounts: true,
             })
             .catch((error) => {
-                // If the invite is invalid, return an error message
                 return interaction.reply({
                     content: `There was an error fetching the invite: ${error.message}`,
                     ephemeral: true,
                 });
             });
 
-        // If there is no invite, return an error message
         if (!invite.guild) return;
 
-        // Create the embed for the invite
         const embed = new EmbedBuilder()
             .setTitle(`Invite for ${invite.guild.name}`)
             .setThumbnail(invite.guild.iconURL())
             .setColor(BOT_COLOR as ColorResolvable);
 
-        // If the guild has X, add X to the embed
         if (invite.guild.description)
             embed.setDescription(invite.guild.description);
         if (invite.guild.premiumSubscriptionCount) {

@@ -1,8 +1,8 @@
 import {
     ApplicationCommandType,
+    ChatInputCommandInteraction,
     Client,
     ColorResolvable,
-    CommandInteraction,
     EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';
@@ -14,7 +14,7 @@ export const About: Command = {
     name: 'about',
     description: 'Get some details about the bot.',
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: CommandInteraction) => {
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const embed = new EmbedBuilder()
             .setTitle('About Me')
             .setDescription(

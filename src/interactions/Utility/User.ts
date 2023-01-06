@@ -3,11 +3,11 @@ import {
     ApplicationCommandType,
     Client,
     ColorResolvable,
-    CommandInteraction,
+    ChatInputCommandInteraction,
     EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';
-import { idToTimestamp, UserData } from '@helpers/Functions';
+import { idToTimestamp } from '@helpers/Functions';
 
 const { BOT_COLOR } = process.env;
 
@@ -23,7 +23,7 @@ export const User: Command = {
             required: false,
         },
     ],
-    run: async (client: Client, interaction: CommandInteraction) => {
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const target = interaction.options.getUser('user') ?? interaction.user;
         const userFetch = await target.fetch(true);
         const memberFetch = await interaction.guild!.members.fetch(target.id);
@@ -37,17 +37,8 @@ export const User: Command = {
                 } at ${new Date().toLocaleTimeString('en-US')} UTC`,
                 iconURL: interaction.user.displayAvatarURL(),
             })
+            .setTitle(`${userFetch.username}#${userFetch.discriminator}`)
             .addFields(
-                {
-                    name: 'Username',
-                    value: `\`${target.username}#${target.discriminator}\``,
-                    inline: true,
-                },
-                {
-                    name: 'ID',
-                    value: `\`${target.id}\``,
-                    inline: true,
-                },
                 {
                     name: 'Created On',
                     value: `${idToTimestamp(
@@ -55,23 +46,48 @@ export const User: Command = {
                         'long-date'
                     )}`,
                     inline: true,
+                },
+                {
+                    name: 'ID',
+                    value: `\`${target.id}\``,
+                    inline: true,
                 }
             );
 
-        if (userFetch.flags!.toArray().length > 0) {
+        if (userFetch.bannerURL()) {
+            embed.setImage(
+                userFetch.bannerURL({
+                    size: 4096,
+                }) as string
+            );
+        }
+
+        if (userFetch.accentColor) {
+            embed.setColor(userFetch.accentColor as ColorResolvable);
+        }
+
+        if (memberFetch) {
+            embed.addFields(
+                {
+                    name: 'Nickname',
+                    value: memberFetch.nickname || 'None',
+                    inline: true,
+                },
+                {
+                    name: 'Roles',
+                    value: (memberFetch.roles.cache.size - 1).toString(),
+                    inline: true,
+                }
+            );
+        }
+
+        if (target.id === interaction.client.user.id) {
             embed.addFields({
-                name: 'User Flags',
-                value: userFetch
-                    .flags!.toArray()
-                    .map((r) => {
-                        console.log(r);
-                        return `${UserData.flags[r].name}`;
-                    })
-                    .join('\n '),
+                name: "Hey That's Me!",
+                value: `I'm in ${interaction.client.guilds.cache.size} servers! Use </about:1016817282212700252> to get more information about me!`,
                 inline: false,
             });
         }
-
         await interaction.followUp({
             ephemeral: false,
             embeds: [embed],

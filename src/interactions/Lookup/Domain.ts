@@ -1,8 +1,8 @@
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
+    ChatInputCommandInteraction,
     Client,
-    CommandInteraction,
     EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';
@@ -68,10 +68,8 @@ export const Domain: Command = {
             ],
         },
     ],
-    run: async (client: Client, interaction: CommandInteraction) => {
-        // @ts-ignore
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const domain = interaction.options.getString('domain');
-        // @ts-ignore
         const type = interaction.options.getString('type');
 
         const response = await fetch(

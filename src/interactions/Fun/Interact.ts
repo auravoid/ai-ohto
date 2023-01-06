@@ -1,9 +1,9 @@
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
+    ChatInputCommandInteraction,
     Client,
     ColorResolvable,
-    CommandInteraction,
     EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';
@@ -70,9 +70,8 @@ export const Interact: Command = {
         },
     ],
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: CommandInteraction) => {
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const target = interaction.options.getUser('user', true);
-        // @ts-ignore '.getString' is a valid method.
         const type = interaction.options.getString('interaction', true);
 
         const imgUrl = await weeby.gif.fetch(type);
