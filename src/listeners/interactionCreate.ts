@@ -17,7 +17,7 @@ const handleSlashCommand = async (
         (c) => c.name === interaction.commandName
     );
     if (!slashCommand) {
-        interaction.followUp({ content: 'An error has occurred' });
+        await interaction.followUp({ content: 'An error has occurred' });
         return;
     }
 

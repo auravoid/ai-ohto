@@ -4,13 +4,13 @@ import {
     Client,
     ColorResolvable,
     CommandInteraction,
-    EmbedBuilder, InviteResolvable,
+    EmbedBuilder,
+    InviteResolvable,
 } from 'discord.js';
 import { Command } from '@/Command';
 import { GuildData } from '@helpers/Functions';
-const {
-    BOT_COLOR
-} = process.env;
+
+const { BOT_COLOR } = process.env;
 
 export const Invite: Command = {
     name: 'invite',
@@ -23,7 +23,7 @@ export const Invite: Command = {
             type: ApplicationCommandOptionType.String,
             required: true,
         },
-      ],
+    ],
     run: async (client: Client, interaction: CommandInteraction) => {
         // @ts-ignore
         const code = interaction.options.getString('code');
@@ -90,7 +90,7 @@ export const Invite: Command = {
                 name: 'Verification Level',
                 value: GuildData.verificationLevel[
                     invite.guild.verificationLevel
-                    ],
+                ],
                 inline: true,
             });
         }

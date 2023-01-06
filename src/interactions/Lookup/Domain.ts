@@ -1,6 +1,6 @@
 import {
-    ApplicationCommandType,
     ApplicationCommandOptionType,
+    ApplicationCommandType,
     Client,
     CommandInteraction,
     EmbedBuilder,

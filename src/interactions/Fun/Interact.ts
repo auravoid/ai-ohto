@@ -1,14 +1,16 @@
 import {
-    ApplicationCommandType,
     ApplicationCommandOptionType,
+    ApplicationCommandType,
     Client,
+    ColorResolvable,
     CommandInteraction,
     EmbedBuilder,
-    ColorResolvable,
 } from 'discord.js';
 import { Command } from '@/Command';
-const { KEY_WEEBYAPI, BOT_COLOR } = process.env;
 import WeebyAPI from 'weeby-js';
+
+const { KEY_WEEBYAPI, BOT_COLOR } = process.env;
+
 const weeby = new WeebyAPI(KEY_WEEBYAPI as string);
 
 export const Interact: Command = {

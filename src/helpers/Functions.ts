@@ -20,6 +20,66 @@ export function prettyDate(uglyDate: number): string {
     return segments.join(', ');
 }
 
+/**
+ *
+ * @description - A function to translate Discord ID to Timestamp
+ * @param id {number} - A Discord ID
+ * @param type {string} - The type of ID
+ * // Types:
+ * // - short-date
+ * // - long-date
+ * // - short-time
+ * // - long-time
+ * // - short-datetime
+ * // - long-datetime
+ * // - relative
+ * @returns {string} - A Discord timestamp
+ */
+export function idToTimestamp(id: number, type: string) {
+    // Make sure type matches one of the types
+    if (
+        ![
+            'short-time',
+            'long-time',
+            'short-date',
+            'long-date',
+            'short-datetime',
+            'long-datetime',
+            'relative',
+        ].includes(type)
+    ) {
+        throw new Error('Invalid type');
+    }
+    // Make sure the ID is a number
+    if (isNaN(id)) {
+        throw new Error('ID is not a number');
+    }
+
+    const epoch = 1420070400000;
+    // eslint-disable-next-line no-undef
+    const date = BigInt(id) >> 22n;
+    // @ts-ignore
+    const timestamp = Math.floor(new Date(Number(date) + epoch) / 1000);
+
+    // Return the timestamp
+    switch (type) {
+        case 'short-time':
+            return `<t:${timestamp}:t>`;
+        case 'long-time':
+            return `<t:${timestamp}:T>`;
+        case 'short-date':
+            return `<t:${timestamp}:d>`;
+        case 'long-date':
+            return `<t:${timestamp}:D>`;
+        case 'short-datetime':
+            return `<t:${timestamp}:f>`;
+        case 'long-datetime':
+            return `<t:${timestamp}:F>`;
+        case 'relative':
+            return `<t:${timestamp}:R>`;
+    }
+}
+
 export class GuildData {
     public static verificationLevel: string[] = [
         'None - unrestricted access to the server',
@@ -45,7 +105,8 @@ export class GuildData {
         'None - not enough boosts',
         'Tier 1 - server boosts level 1',
         'Tier 2 - server boosts level 2',
-        'Tier 3 - server boosts level 3'];
+        'Tier 3 - server boosts level 3',
+    ];
     public static systemChannelFlags: string[] = [
         'Suppress member join notifications',
         'Suppress server boost notifications',

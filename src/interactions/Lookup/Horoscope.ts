@@ -2,7 +2,8 @@ import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
     Client,
-    CommandInteraction, EmbedBuilder,
+    CommandInteraction,
+    EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';
 import fetch from 'node-fetch-native';
@@ -73,7 +74,9 @@ export const Horoscope: Command = {
         // @ts-ignore
         const sign: String = interaction.options.get('sign').value;
 
-        const response = await fetch('https://ohmanda.com/api/horoscope/' + sign);
+        const response = await fetch(
+            'https://ohmanda.com/api/horoscope/' + sign
+        );
         const horoscopeData = await response.json();
 
         const horoscopeName = sign.charAt(0).toUpperCase() + sign.slice(1);
@@ -82,7 +85,6 @@ export const Horoscope: Command = {
             .setTitle(`Horoscope for ${horoscopeName} for today!`)
             .setDescription(horoscopeData.horoscope)
             .setColor('#e083ce');
-
 
         await interaction.followUp({
             ephemeral: false,
