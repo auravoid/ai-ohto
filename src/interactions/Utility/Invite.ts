@@ -8,7 +8,7 @@ import {
     InviteResolvable,
 } from 'discord.js';
 import { Command } from '@/Command';
-import { GuildData } from '@helpers/Functions';
+import { GuildData } from '@helpers/Classes';
 
 const { BOT_COLOR } = process.env;
 

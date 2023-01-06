@@ -36,7 +36,6 @@ export function prettyDate(uglyDate: number): string {
  * @returns {string} - A Discord timestamp
  */
 export function idToTimestamp(id: number, type: string) {
-    // Make sure type matches one of the types
     if (
         ![
             'short-time',
@@ -50,16 +49,16 @@ export function idToTimestamp(id: number, type: string) {
     ) {
         throw new Error('Invalid type');
     }
-    // Make sure the ID is a number
+
     if (isNaN(id)) {
         throw new Error('ID is not a number');
     }
 
     const epoch = 1420070400000;
-    // eslint-disable-next-line no-undef
     const date = BigInt(id) >> 22n;
-    // @ts-ignore
-    const timestamp = Math.floor(new Date(Number(date) + epoch) / 1000);
+    const timestamp = Math.floor(
+        (new Date(Number(date) + epoch) as unknown as number) / 1000
+    );
 
     // Return the timestamp
     switch (type) {
@@ -78,42 +77,4 @@ export function idToTimestamp(id: number, type: string) {
         case 'relative':
             return `<t:${timestamp}:R>`;
     }
-}
-
-export class GuildData {
-    public static verificationLevel: string[] = [
-        'None - unrestricted access to the server',
-        'Low - must have a verified email on their Discord account',
-        'Medium - must be registered on Discord for longer than 5 minutes',
-        'High - Must be a member of the server for longer than 10 minutes',
-        'Highest - Must have a verified phone on their Discord account',
-    ];
-    public static explicitContentFilter: string[] = [
-        'Disabled - do not scan any messages',
-        'Members without roles - scan messages sent by members without a role',
-        'All members - scan all messages sent by all members',
-    ];
-    public static defaultMessageNotifications: string[] = [
-        'All messages - receive notifications for all messages',
-        'Only @mentions - only receive notifications when you are @mentioned',
-    ];
-    public static mfaLevel: string[] = [
-        'None - 2FA not required',
-        'elevated - 2FA required for moderation actions',
-    ];
-    public static premiumTier: string[] = [
-        'None - not enough boosts',
-        'Tier 1 - server boosts level 1',
-        'Tier 2 - server boosts level 2',
-        'Tier 3 - server boosts level 3',
-    ];
-    public static systemChannelFlags: string[] = [
-        'Suppress member join notifications',
-        'Suppress server boost notifications',
-        'Suppress server setup tips',
-    ];
-    public static nsfwLevel: string[] = [
-        'Default - display an age gate for NSFW channels',
-        'Explicit - do not display an age gate for NSFW channels',
-    ];
 }
