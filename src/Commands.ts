@@ -10,6 +10,7 @@ import { Domain } from '@interactions/Lookup/Domain';
 import { Horoscope } from '@interactions/Lookup/Horoscope';
 import { Invite } from '@interactions/Utility/Invite';
 import { Snowflake } from '@interactions/Utility/Snowflake';
+import { User } from '@interactions/Utility/User';
 
 export const Commands: Command[] = [
     Coinflip,
@@ -23,4 +24,5 @@ export const Commands: Command[] = [
     Horoscope,
     Invite,
     Snowflake,
+    User,
 ];
