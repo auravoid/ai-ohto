@@ -1,6 +1,7 @@
 import "./bootstrap";
 
 import { Client, GatewayIntentBits } from 'discord.js';
+import "./helpers/glob";
 import interactionCreate from './listeners/interactionCreate';
 import ready from './listeners/ready';
 

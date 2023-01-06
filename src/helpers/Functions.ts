@@ -117,3 +117,4 @@ export class GuildData {
         'Explicit - do not display an age gate for NSFW channels',
     ];
 }
+

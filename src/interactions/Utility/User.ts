@@ -1,13 +1,14 @@
+import { Command } from '@/Command';
+import { UserData } from "@/helpers/UserData";
+import { idToTimestamp } from '@helpers/Functions';
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
     Client,
     ColorResolvable,
     CommandInteraction,
-    EmbedBuilder,
+    EmbedBuilder
 } from 'discord.js';
-import { Command } from '@/Command';
-import { idToTimestamp, UserData } from '@helpers/Functions';
 
 const { BOT_COLOR } = process.env;
 
@@ -32,9 +33,8 @@ export const User: Command = {
             .setColor(BOT_COLOR as ColorResolvable)
             .setThumbnail(userFetch.displayAvatarURL())
             .setFooter({
-                text: `Requested by ${
-                    interaction.user.username
-                } at ${new Date().toLocaleTimeString('en-US')} UTC`,
+                text: `Requested by ${interaction.user.username
+                    } at ${new Date().toLocaleTimeString('en-US')} UTC`,
                 iconURL: interaction.user.displayAvatarURL(),
             })
             .addFields(
@@ -64,7 +64,6 @@ export const User: Command = {
                 value: userFetch
                     .flags!.toArray()
                     .map((r) => {
-                        console.log(r);
                         return `${UserData.flags[r].name}`;
                     })
                     .join('\n '),
