@@ -7,11 +7,9 @@ import {
     EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';
-import WeebyAPI from 'weeby-js';
+import { fetchGif } from '@helpers/WeebyAPI';
 
 const { KEY_WEEBYAPI, BOT_COLOR } = process.env;
-
-const weeby = new WeebyAPI(KEY_WEEBYAPI as string);
 
 export const Interact: Command = {
     name: 'interact',
@@ -74,7 +72,7 @@ export const Interact: Command = {
         const target = interaction.options.getUser('user', true);
         const type = interaction.options.getString('interaction', true);
 
-        const imgUrl = await weeby.gif.fetch(type);
+        const { url } = await fetchGif(type);
 
         const intDesc = {
             cuddle: `<@${target.id}> got cuddles from <@${interaction.user.id}>`,
@@ -90,7 +88,7 @@ export const Interact: Command = {
 
         const embed = new EmbedBuilder()
             .setDescription(intDesc[type as keyof typeof intDesc])
-            .setImage(imgUrl)
+            .setImage(url as string)
             .setColor(BOT_COLOR as ColorResolvable);
 
         await interaction.followUp({

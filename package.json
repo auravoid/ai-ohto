@@ -2,8 +2,7 @@
     "dependencies": {
         "discord.js": "^14.7.1",
         "node-fetch-native": "^1.0.1",
-        "uwuifier": "^4.0.5",
-        "weeby-js": "^2.1.2"
+        "uwuifier": "^4.0.5"
     },
     "devDependencies": {
         "@types/node": "^18.11.18",
