@@ -10,6 +10,7 @@
         "dotenv": "^16.0.3",
         "nodemon": "^2.0.20",
         "prettier": "^2.8.1",
+        "source-map-support": "^0.5.21",
         "ts-node": "^10.9.1",
         "tsconfig-paths": "^4.1.2",
         "typescript": "^4.9.4"
@@ -17,14 +18,14 @@
     "name": "ai-ohto",
     "version": "4.0.0",
     "description": "Ai Ohto as a bot.",
-    "main": "dist/bot.js",
+    "main": "dist/Bot.js",
     "author": "auravoid",
     "license": "BSD-3-Clause",
     "private": true,
     "scripts": {
-        "start": "ts-node -r dotenv/config -r tsconfig-paths/register src/Bot.ts",
-        "dev": "nodemon -r dotenv/config -r tsconfig-paths/register src/Bot.ts",
         "build": "tsc",
+        "dev": "nodemon src/Bot.ts",
+        "start": "yarn build && node .",
         "lint": "prettier --check src/**/*.{ts,js,json}",
         "lint:fix": "prettier --write src/**/*.{ts,js,json}"
     }

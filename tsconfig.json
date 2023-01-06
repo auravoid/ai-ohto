@@ -2,28 +2,23 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "commonjs",
+        "lib": ["ESNext"],
         "rootDir": "./src/",
         "outDir": "./dist/",
         "strict": true,
         "moduleResolution": "node",
-        "importHelpers": true,
-        "experimentalDecorators": true,
         "esModuleInterop": true,
-        "skipLibCheck": true,
         "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true,
         "forceConsistentCasingInFileNames": true,
         "removeComments": true,
-        "typeRoots": ["node_modules/@types"],
-        "sourceMap": false,
-        "baseUrl": "./",
+        "sourceMap": true,
+        "baseUrl": "./src",
         "paths": {
-            "@/*": ["src/*"],
-            "@interactions/*": ["src/interactions/*"],
-            "@helpers/*": ["src/helpers/*"]
+            "@/*": ["./*"],
+            "@interactions/*": ["./interactions/*"],
+            "@helpers/*": ["./helpers/*"]
         }
     },
-    "files": ["src/Bot.ts"],
-    "include": ["./**/*.ts"],
-    "exclude": ["node_modules", "dist"]
+    "include": ["src/**/*.ts"]
 }
