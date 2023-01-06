@@ -1,13 +1,10 @@
-import {
-    ApplicationCommandOptionType,
-    ApplicationCommandType,
-    Client,
-    ColorResolvable,
-    ChatInputCommandInteraction,
-    EmbedBuilder,
-} from 'discord.js';
 import { Command } from '@/Command';
 import { idToTimestamp } from '@helpers/Functions';
+import {
+    ApplicationCommandOptionType,
+    ApplicationCommandType, ChatInputCommandInteraction, Client,
+    ColorResolvable, EmbedBuilder
+} from 'discord.js';
 
 const { BOT_COLOR } = process.env;
 
@@ -32,9 +29,8 @@ export const User: Command = {
             .setColor(BOT_COLOR as ColorResolvable)
             .setThumbnail(userFetch.displayAvatarURL())
             .setFooter({
-                text: `Requested by ${
-                    interaction.user.username
-                } at ${new Date().toLocaleTimeString('en-US')} UTC`,
+                text: `Requested by ${interaction.user.username
+                    } at ${new Date().toLocaleTimeString('en-US')} UTC`,
                 iconURL: interaction.user.displayAvatarURL(),
             })
             .setTitle(`${userFetch.username}#${userFetch.discriminator}`)

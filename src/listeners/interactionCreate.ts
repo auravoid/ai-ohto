@@ -1,31 +1,34 @@
-import { Client, ChatInputCommandInteraction, Interaction } from 'discord.js';
+import { Client, ChatInputCommandInteraction, Interaction, ContextMenuCommandInteraction } from 'discord.js';
 import { Commands } from '@/Commands';
+import { CommandMap } from '../Commands';
 
-export default (client: Client): void => {
-    client.on('interactionCreate', async (interaction: Interaction | any) => {
-        if (interaction.isCommand() || interaction.isContextMenu()) {
-            await handleSlashCommand(client, interaction);
-        }
-    });
+export default async function handleInteraction(client: Client, interaction: Interaction) {
+    if (interaction.isCommand() || interaction.isContextMenuCommand()) {
+        await handleSlashCommand(client, interaction);
+    }
 };
 
 const handleSlashCommand = async (
     client: Client,
-    interaction: ChatInputCommandInteraction
+    interaction: ChatInputCommandInteraction | ContextMenuCommandInteraction
 ): Promise<void> => {
-    const slashCommand = Commands.find(
-        (c) => c.name === interaction.commandName
-    );
-    if (!slashCommand) {
-        if (interaction.replied) {
-            await interaction.editReply({ content: 'An error has occurred' });
-        } else {
-            await interaction.reply({ content: 'An error has occurred' });
-        }
+    const cmd = CommandMap[interaction.commandName];
+    if (!cmd) {
+        console.warn(`[handleSlashCommand] Command ${interaction.commandName} not found`);
         return;
     }
 
     await interaction.deferReply();
 
-    slashCommand.run(client, interaction);
+    try {
+        await cmd.run(client, interaction);
+    } catch (err: any) {
+        // TODO: You probably want to handle this better, maybe log interaction info, args etc
+        console.error(err);
+        await interaction.editReply({
+            content: 'There was an error while executing this command!',
+        }).catch(() => {
+            // TODO: Something is very wrong here, take appropriate action
+        });
+    }
 };
