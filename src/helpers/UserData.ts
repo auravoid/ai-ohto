@@ -1,65 +1,67 @@
-import { UserFlags } from "discord.js";
+import { UserFlags } from 'discord.js';
 
 export const UserData = {
     flags: {
-        "ActiveDeveloper": {
-            "name": "Active Developer"
+        ActiveDeveloper: {
+            name: 'Active Developer',
         },
-        "BotHTTPInteractions": {
-            "name": "Bot HTTP Interactions",
-            "description": "Bot uses only HTTP interactions and is shown in the online member list"
+        BotHTTPInteractions: {
+            name: 'Bot HTTP Interactions',
+            description:
+                'Bot uses only HTTP interactions and is shown in the online member list',
         },
-        "BugHunterLevel1": {
-            "name": "Level 1 Bug Hunter"
+        BugHunterLevel1: {
+            name: 'Level 1 Bug Hunter',
         },
-        "BugHunterLevel2": {
-            "name": "Level 2 Bug Hunter"
+        BugHunterLevel2: {
+            name: 'Level 2 Bug Hunter',
         },
-        "CertifiedModerator": {
-            "name": "Discord Certified Moderator"
+        CertifiedModerator: {
+            name: 'Discord Certified Moderator',
         },
-        "HypeSquadOnlineHouse1": {
-            "name": "House Bravery Member"
+        HypeSquadOnlineHouse1: {
+            name: 'House Bravery Member',
         },
-        "HypeSquadOnlineHouse2": {
-            "name": "House Brilliance Member"
+        HypeSquadOnlineHouse2: {
+            name: 'House Brilliance Member',
         },
-        "HypeSquadOnlineHouse3": {
-            "name": "House Balance Member"
+        HypeSquadOnlineHouse3: {
+            name: 'House Balance Member',
         },
-        "Hypesquad": {
-            "name": "HypeSquad Events Member"
+        Hypesquad: {
+            name: 'HypeSquad Events Member',
         },
-        "Partner": {
-            "name": "Partnered Server Owner"
+        Partner: {
+            name: 'Partnered Server Owner',
         },
-        "PremiumEarlySupporter": {
-            "name": "Early Nitro Supporter"
+        PremiumEarlySupporter: {
+            name: 'Early Nitro Supporter',
         },
-        "Quarantined": {
-            "name": "Quarantined",
-            "description": "User’s account has been quarantined based on recent activity"
+        Quarantined: {
+            name: 'Quarantined',
+            description:
+                'User’s account has been quarantined based on recent activity',
         },
-        "Spammer": {
-            "name": "Spammer",
-            "description": "User has been identified as spammer"
+        Spammer: {
+            name: 'Spammer',
+            description: 'User has been identified as spammer',
         },
-        "Staff": {
-            "name": "Discord Employee"
+        Staff: {
+            name: 'Discord Employee',
         },
-        "TeamPseudoUser": {
-            "name": "Discord Team"
+        TeamPseudoUser: {
+            name: 'Discord Team',
         },
-        "VerifiedBot": {
-            "name": "Verified Bot"
+        VerifiedBot: {
+            name: 'Verified Bot',
         },
-        "VerifiedDeveloper": {
-            "name": "Early Verified Bot Developer"
+        VerifiedDeveloper: {
+            name: 'Early Verified Bot Developer',
         },
     } satisfies {
-            [key in keyof typeof UserFlags]: {
-                name: string;
-                description?: string;
-            }
-        }
+        [key in keyof typeof UserFlags]: {
+            name: string;
+            description?: string;
+        };
+    },
 };

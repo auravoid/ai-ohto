@@ -12,4 +12,4 @@ export default async function onceReady(client: Client) {
     await Status(client);
 
     console.log(`${client.user.username} is online`);
-};
+}
