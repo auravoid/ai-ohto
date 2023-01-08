@@ -1,11 +1,11 @@
 import {
-    Client,
     ChatInputCommandInteraction,
-    Interaction,
+    Client,
     ContextMenuCommandInteraction,
+    Interaction,
 } from 'discord.js';
-import { Commands } from '@/Commands';
-import { CommandMap } from '../Commands';
+import { CommandMap } from '@/Commands';
+import * as console from 'console';
 
 export default async function handleInteraction(
     client: Client,
@@ -33,8 +33,25 @@ const handleSlashCommand = async (
     try {
         await cmd.run(client, interaction);
     } catch (err: any) {
-        // TODO: You probably want to handle this better, maybe log interaction info, args etc
-        console.error(err);
+        console.group(
+            `[handleSlashCommand] Error in command ${interaction.commandName}`
+        );
+        console.info(
+            `Guild: ${interaction.guild?.name} (${interaction.guildId})`
+        );
+        console.info(`User: ${interaction.user.tag} (${interaction.user.id})`);
+
+        if (interaction.options && interaction.options.data.length > 0) {
+            console.info('Options:');
+            interaction.options.data.forEach((option) => {
+                console.info(
+                    `  ${option.name}: ${option.value} (${option.type})`
+                );
+            });
+        }
+
+        console.groupEnd();
+
         await interaction
             .editReply({
                 content: 'There was an error while executing this command!',
