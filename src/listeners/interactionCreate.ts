@@ -51,6 +51,8 @@ const handleSlashCommand = async (
             });
         }
 
+        console.error(err);
+
         console.groupEnd();
 
         const embed = new EmbedBuilder()
