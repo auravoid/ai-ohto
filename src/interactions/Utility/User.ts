@@ -1,5 +1,6 @@
 import { Command } from '@/Command';
-import { idToTimestamp } from '@helpers/Functions';
+import { idToTimestamp, dateToTimestamp } from '@helpers/Functions';
+import { UserData } from '@helpers/Classes';
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
@@ -26,7 +27,6 @@ export const User: Command = {
     run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const target = interaction.options.getUser('user') ?? interaction.user;
         const userFetch = await target.fetch(true);
-        const memberFetch = await interaction.guild!.members.fetch(target.id);
 
         const embed = new EmbedBuilder()
             .setColor(BOT_COLOR as ColorResolvable)
@@ -48,6 +48,19 @@ export const User: Command = {
                 }
             );
 
+        if (userFetch.flags!.toArray().length > 0) {
+            embed.addFields({
+                name: 'User Flags',
+                value: userFetch
+                    .flags!.toArray()
+                    .map((r) => {
+                        return `${UserData.flags[r].name}`;
+                    })
+                    .join('\n '),
+                inline: false,
+            });
+        }
+
         if (userFetch.bannerURL()) {
             embed.setImage(
                 userFetch.bannerURL({
@@ -57,19 +70,29 @@ export const User: Command = {
         }
 
         if (userFetch.accentColor) {
-            embed.setColor(userFetch.accentColor as ColorResolvable);
+            embed.setColor(userFetch.accentColor);
         }
 
-        if (memberFetch) {
+        // If user is in the guild, add more fields
+        if (interaction.guild!.members.cache.get(target.id)) {
+            const member = interaction.guild!.members.cache.get(target.id);
             embed.addFields(
                 {
+                    name: 'Joined Server On',
+                    value: dateToTimestamp(
+                        member!.joinedTimestamp as number,
+                        'long-date'
+                    ),
+                    inline: true,
+                },
+                {
                     name: 'Nickname',
-                    value: memberFetch.nickname || 'None',
+                    value: member!.nickname || 'None',
                     inline: true,
                 },
                 {
                     name: 'Roles',
-                    value: (memberFetch.roles.cache.size - 1).toString(),
+                    value: (member!.roles.cache.size - 1).toString(),
                     inline: true,
                 }
             );

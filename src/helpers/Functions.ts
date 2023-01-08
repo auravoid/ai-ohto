@@ -79,6 +79,61 @@ export function idToTimestamp(id: number, type: string) {
     }
 }
 
+/**
+ *
+ * @description - A function to translate Date to Timestamp
+ * @param date {Date} - A Date
+ * @param type {string} - The type of ID
+ * // Types:
+ * // - short-date
+ * // - long-date
+ * // - short-time
+ * // - long-time
+ * // - short-datetime
+ * // - long-datetime
+ * // - relative
+ * @returns {string} - A Discord timestamp
+ */
+export function dateToTimestamp(date: number, type: string): string {
+    if (
+        ![
+            'short-time',
+            'long-time',
+            'short-date',
+            'long-date',
+            'short-datetime',
+            'long-datetime',
+            'relative',
+        ].includes(type)
+    ) {
+        throw new Error('Invalid type');
+    }
+    if (isNaN(date)) {
+        throw new Error('Date is not a number');
+    }
+
+    const timestamp = Math.floor(date / 1000);
+
+    switch (type) {
+        case 'short-time':
+            return `<t:${timestamp}:t>`;
+        case 'long-time':
+            return `<t:${timestamp}:T>`;
+        case 'short-date':
+            return `<t:${timestamp}:d>`;
+        case 'long-date':
+            return `<t:${timestamp}:D>`;
+        case 'short-datetime':
+            return `<t:${timestamp}:f>`;
+        case 'long-datetime':
+            return `<t:${timestamp}:F>`;
+        case 'relative':
+            return `<t:${timestamp}:R>`;
+        default:
+            return `<t:${timestamp}:t>`;
+    }
+}
+
 export class GuildData {
     public static verificationLevel: string[] = [
         'None - unrestricted access to the server',
