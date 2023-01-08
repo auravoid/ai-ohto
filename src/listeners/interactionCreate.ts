@@ -57,7 +57,7 @@ const handleSlashCommand = async (
                 content: 'There was an error while executing this command!',
             })
             .catch(() => {
-                // TODO: Something is very wrong here, take appropriate action
+                // Welp, we tried
             });
     }
 };
