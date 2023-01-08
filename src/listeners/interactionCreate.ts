@@ -6,6 +6,7 @@ import {
     Interaction,
 } from 'discord.js';
 import { CommandMap } from '@/Commands';
+
 const { BOT_SERVER } = process.env;
 
 export default async function handleInteraction(

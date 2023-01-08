@@ -1,9 +1,9 @@
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
+    ChatInputCommandInteraction,
     Client,
     EmbedBuilder,
-    ChatInputCommandInteraction,
 } from 'discord.js';
 import { Command } from '@/Command';
 import fetch from 'node-fetch-native';

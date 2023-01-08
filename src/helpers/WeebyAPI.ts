@@ -1,4 +1,5 @@
 import fetch from 'node-fetch-native';
+
 const { KEY_WEEBYAPI } = process.env;
 
 export async function fetchGif(type: string) {
