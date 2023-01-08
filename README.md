@@ -4,7 +4,9 @@ Ai Ohto is a fun and useful Discord bot designed to enhance your server experien
 
 ---
 
-This is not the repo that my bot runs on and this repo may not be up-to-date with what my bot has completely. Changes made here by contributors will be made to my bot eventually.
+~~This is not the repo that my bot runs on and this repo may not be up-to-date with what my bot has completely. Changes made here by contributors will be made to my bot eventually.~~
+
+After some consideration, this will be the repo my bot runs on. Making it kinda offically open source. I'm doing my best migrating my bot to this repo and I'll edit this README when I'm done.
 
 ---
 
