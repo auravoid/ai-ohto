@@ -2,10 +2,11 @@ import {
     ChatInputCommandInteraction,
     Client,
     ContextMenuCommandInteraction,
+    EmbedBuilder,
     Interaction,
 } from 'discord.js';
 import { CommandMap } from '@/Commands';
-import * as console from 'console';
+const { BOT_SERVER } = process.env;
 
 export default async function handleInteraction(
     client: Client,
@@ -52,9 +53,18 @@ const handleSlashCommand = async (
 
         console.groupEnd();
 
+        const embed = new EmbedBuilder()
+            .setTitle('There was an error while executing this command!')
+            .setDescription(
+                `There was an error while executing this command! Please try again later. If this error persists, please join the [support server](${
+                    BOT_SERVER as string
+                }) and report this error.`
+            );
+
         await interaction
-            .editReply({
-                content: 'There was an error while executing this command!',
+            .followUp({
+                embeds: [embed],
+                ephemeral: true,
             })
             .catch(() => {
                 // Welp, we tried
