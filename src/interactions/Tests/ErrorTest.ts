@@ -56,7 +56,7 @@ export const ErrorTest: Command = {
         },
     ],
     run: async (client: Client, interaction: ChatInputCommandInteraction) => {
-        throw new Error('ErrorTest error');
+        throw new Error('Intentionally thrown error for debugging.');
 
         await interaction.reply({
             ephemeral: true,

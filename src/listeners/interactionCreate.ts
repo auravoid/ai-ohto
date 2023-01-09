@@ -6,6 +6,7 @@ import {
     Interaction,
 } from 'discord.js';
 import { CommandMap } from '@/Commands';
+import { onError } from '@/helpers/Sender';
 
 const { BOT_SERVER } = process.env;
 
@@ -64,13 +65,13 @@ const handleSlashCommand = async (
                 }) and report this error.`
             );
 
+        await onError(err, interaction).catch(console.error);
+
         await interaction
             .followUp({
                 embeds: [embed],
                 ephemeral: true,
             })
-            .catch(() => {
-                // Welp, we tried
-            });
+            .catch(() => {});
     }
 };
