@@ -179,3 +179,13 @@ export function getMemory() {
     const used = process.memoryUsage().heapUsed / 1024 / 1024;
     return toSize(used * 1024 * 1024);
 }
+
+/**
+ *
+ * @description - A function to format a number with commas
+ * @param uglyNumber {number} - A long number
+ * @returns {string} - A prettier number
+ */
+export function prettyNumber(uglyNumber: number): string {
+    return uglyNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
