@@ -8,7 +8,7 @@ import { Command } from '@/Command';
 
 export const ErrorTest: Command = {
     name: 'test',
-    description: 'ErrorTest command',
+    description: 'Throw an error to test error handling',
     type: ApplicationCommandType.ChatInput,
     guildOnly: true,
     options: [
