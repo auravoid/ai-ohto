@@ -1,4 +1,4 @@
-import { CommandInteraction, EmbedBuilder } from 'discord.js';
+import { CommandInteraction, EmbedBuilder, TextChannel } from 'discord.js';
 
 const { BOT_HOME_GUILD, BOT_HOME_CHANNEL } = process.env;
 
@@ -51,7 +51,6 @@ export async function onError(
         ?.channels.cache.get(BOT_HOME_CHANNEL as string);
 
     if (channel) {
-        // @ts-ignore
-        channel.send({ embeds: [embed] });
+        await (channel as TextChannel).send({ embeds: [embed] });
     }
 }
