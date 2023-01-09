@@ -32,7 +32,14 @@ export async function onError(
                     interaction.options.data
                         .map(
                             (option) =>
-                                `\`${option.name}\`: \`${option.value}\` (\`${option.type}\`)`
+                                `\`${option.name}\`: \`${
+                                    (option.value?.toString()
+                                        .length as number) > 20
+                                        ? option.value?.toString().slice(0, 5) +
+                                          ' [...] ' +
+                                          option.value?.toString().slice(-5)
+                                        : option.value?.toString()
+                                }\``
                         )
                         .join('\n') || 'None',
                 inline: false,
