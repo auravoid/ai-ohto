@@ -68,7 +68,7 @@ export const Interact: Command = {
         },
     ],
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const target = interaction.options.getUser('user', true);
         const type = interaction.options.getString('interaction', true);
 

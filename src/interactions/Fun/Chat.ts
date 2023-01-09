@@ -42,7 +42,7 @@ export const Chat: Command = {
         },
     ],
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const type = interaction.options.getString('type', true);
 
         const response = await fetch('https://api.auravoid.dev/fun/' + type);

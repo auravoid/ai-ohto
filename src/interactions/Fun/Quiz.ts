@@ -14,6 +14,9 @@ import he from 'he';
 
 const { BOT_COLOR } = process.env;
 
+// TODO: Make this command less stupid
+// TODO: Maybe add a score system with a leaderboard using Redis
+
 export const Quiz: Command = {
     name: 'quiz',
     description: 'Generate a trivia quiz just for you!',
@@ -160,7 +163,7 @@ export const Quiz: Command = {
         },
     ],
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const base = 'https://opentdb.com/api.php?amount=1';
         const cat = `${interaction.options.getString('category')}`;
         const dif = `${interaction.options.getString('difficulty')}`;

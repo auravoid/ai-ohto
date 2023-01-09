@@ -70,7 +70,7 @@ export const Horoscope: Command = {
             ],
         },
     ],
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const sign = interaction.options.getString('sign');
 
         const response = await fetch(

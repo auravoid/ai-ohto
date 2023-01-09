@@ -24,7 +24,7 @@ export const Invite: Command = {
             required: true,
         },
     ],
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const code = interaction.options.getString('code');
 
         const invite: InviteResolvable | any = await interaction.client

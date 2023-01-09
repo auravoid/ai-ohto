@@ -29,7 +29,7 @@ export const HTTPCat: Command = {
         },
     ],
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const code =
             interaction.options.getInteger('code', false) ||
             httpCodes[Math.floor(Math.random() * httpCodes.length)];

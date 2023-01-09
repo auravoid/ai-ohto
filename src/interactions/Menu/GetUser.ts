@@ -1,13 +1,16 @@
 import { Command } from '@/Command';
-import { ApplicationCommandType, Client, CommandInteraction } from 'discord.js';
+import {
+    ApplicationCommandType,
+    ContextMenuCommandInteraction,
+} from 'discord.js';
 
 export const GetUser: Command = {
     name: 'Get User',
     type: ApplicationCommandType.User,
-    run: async (client: Client, interaction: CommandInteraction) => {
+    run: async (interaction: ContextMenuCommandInteraction) => {
         await interaction.followUp({
             ephemeral: false,
-            embeds: [],
+            content: 'Something will be here soon.',
         });
     },
 };

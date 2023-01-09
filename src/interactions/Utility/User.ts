@@ -24,7 +24,7 @@ export const User: Command = {
             required: false,
         },
     ],
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const target = interaction.options.getUser('user') ?? interaction.user;
         const userFetch = await target.fetch(true);
 

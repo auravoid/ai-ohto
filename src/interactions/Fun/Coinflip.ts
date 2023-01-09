@@ -9,7 +9,7 @@ export const Coinflip: Command = {
     name: 'coinflip',
     description: 'Heads or Tails?',
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const face = ['Heads', 'Tails'];
         const chosenValue = Math.random() < 0.5 ? 0 : 1;
 

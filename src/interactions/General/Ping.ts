@@ -13,7 +13,7 @@ export const Ping: Command = {
     name: 'ping',
     description: 'Replies with some ping information.',
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const ping = Date.now() - (interaction.createdAt as any);
         const websocketPing = Math.round(interaction.client.ws.ping);
 

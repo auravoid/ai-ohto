@@ -14,7 +14,7 @@ export const About: Command = {
     name: 'about',
     description: 'Get some details about the bot.',
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const embed = new EmbedBuilder()
             .setTitle('About Me')
             .setDescription(

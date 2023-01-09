@@ -34,7 +34,7 @@ const handleSlashCommand = async (
     await interaction.deferReply();
 
     try {
-        await cmd.run(client, interaction);
+        await cmd.run(interaction);
     } catch (err: any) {
         console.group(
             `[handleSlashCommand] Error in command ${interaction.commandName}`

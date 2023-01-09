@@ -68,7 +68,7 @@ export const Domain: Command = {
             ],
         },
     ],
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const domain = interaction.options.getString('domain');
         const type = interaction.options.getString('type');
 

@@ -56,7 +56,7 @@ export const Snowflake: Command = {
             ],
         },
     ],
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const snowflake = interaction.options.getString('id');
         const format = interaction.options.getString('format');
 

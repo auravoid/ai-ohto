@@ -2,10 +2,6 @@ import type { ApplicationCommandData, Client } from 'discord.js';
 import { CommandInteraction } from 'discord.js';
 
 export type Command = ApplicationCommandData & {
-    // FIXME: Passing client is obsolete, use interaction.client instead
     guildOnly?: boolean;
-    run(
-        client: Client,
-        interaction: CommandInteraction
-    ): void | Promise<unknown>;
+    run(interaction: CommandInteraction): void | Promise<unknown>;
 };

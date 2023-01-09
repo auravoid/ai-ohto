@@ -2,7 +2,6 @@ import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
     ChatInputCommandInteraction,
-    Client,
 } from 'discord.js';
 import { Command } from '@/Command';
 
@@ -25,7 +24,7 @@ export const Debug: Command = {
         },
     ],
     type: ApplicationCommandType.ChatInput,
-    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         switch (interaction.options.getSubcommand()) {
             case 'about': {
                 await import('./Debug/about').then((module) => {
