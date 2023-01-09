@@ -1,5 +1,5 @@
 import { Command } from '@/Command';
-import { idToTimestamp, dateToTimestamp } from '@helpers/Functions';
+import { dateToTimestamp, idToTimestamp } from '@helpers/Functions';
 import { UserData } from '@helpers/Classes';
 import {
     ApplicationCommandOptionType,

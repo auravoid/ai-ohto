@@ -17,12 +17,23 @@ export const Debug: Command = {
             type: ApplicationCommandOptionType.Subcommand,
             options: [],
         },
+        {
+            name: 'guilds',
+            description: 'Get a list of guilds the bot is in',
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [],
+        },
     ],
     type: ApplicationCommandType.ChatInput,
     run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         switch (interaction.options.getSubcommand()) {
             case 'about': {
                 await import('./Debug/about').then((module) => {
+                    module.default(interaction);
+                });
+            }
+            case 'guilds': {
+                await import('./Debug/guilds').then((module) => {
                     module.default(interaction);
                 });
             }
