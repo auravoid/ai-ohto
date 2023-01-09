@@ -7,6 +7,8 @@ export async function* globScripts(path: string): AsyncGenerator<string> {
         const childPath = join(path, file.name);
         if (file.isDirectory()) {
             yield* globScripts(childPath);
+        } else if (childPath.includes('Debug\\')) {
+            return;
         } else if (file.name.endsWith('.js') || file.name.endsWith('.ts')) {
             yield childPath;
         }

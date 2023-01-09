@@ -1,3 +1,5 @@
+import os from 'os';
+
 /**
  *
  * @description - A function to format a date
@@ -134,40 +136,46 @@ export function dateToTimestamp(date: number, type: string): string {
     }
 }
 
-export class GuildData {
-    public static verificationLevel: string[] = [
-        'None - unrestricted access to the server',
-        'Low - must have a verified email on their Discord account',
-        'Medium - must be registered on Discord for longer than 5 minutes',
-        'High - Must be a member of the server for longer than 10 minutes',
-        'Highest - Must have a verified phone on their Discord account',
-    ];
-    public static explicitContentFilter: string[] = [
-        'Disabled - do not scan any messages',
-        'Members without roles - scan messages sent by members without a role',
-        'All members - scan all messages sent by all members',
-    ];
-    public static defaultMessageNotifications: string[] = [
-        'All messages - receive notifications for all messages',
-        'Only @mentions - only receive notifications when you are @mentioned',
-    ];
-    public static mfaLevel: string[] = [
-        'None - 2FA not required',
-        'elevated - 2FA required for moderation actions',
-    ];
-    public static premiumTier: string[] = [
-        'None - not enough boosts',
-        'Tier 1 - server boosts level 1',
-        'Tier 2 - server boosts level 2',
-        'Tier 3 - server boosts level 3',
-    ];
-    public static systemChannelFlags: string[] = [
-        'Suppress member join notifications',
-        'Suppress server boost notifications',
-        'Suppress server setup tips',
-    ];
-    public static nsfwLevel: string[] = [
-        'Default - display an age gate for NSFW channels',
-        'Explicit - do not display an age gate for NSFW channels',
-    ];
+/**
+ * @description - A function get the CPU usage
+ * @returns {number} - The CPU usage
+ */
+export function getCpuPercentage() {
+    const cpus = os.cpus();
+    let totalIdle = 0,
+        totalTick = 0;
+    for (let i = 0, len = cpus.length; i < len; i++) {
+        const cpu = cpus[i];
+        for (const type in cpu.times) {
+            // @ts-ignore TODO: Fix this
+            totalTick += cpu.times[type];
+        }
+        totalIdle += cpu.times.idle;
+    }
+    return 100 - Math.floor((totalIdle / totalTick) * 100);
+}
+
+/**
+ *
+ * @description - Convert bytes to a human readable string
+ * @param bytes {number} - The bytes to convert
+ * @returns {string} - The human readable string
+ */
+export function toSize(bytes: number): string {
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes === 0) return 'n/a';
+    const i = parseInt(
+        Math.floor(Math.log(bytes) / Math.log(1024)) as unknown as string
+    );
+    if (i === 0) return bytes + ' ' + sizes[i];
+    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+}
+
+/**
+ * @description - Get the memory usage
+ * @returns {string} - The memory usage
+ */
+export function getMemory() {
+    const used = process.memoryUsage().heapUsed / 1024 / 1024;
+    return toSize(used * 1024 * 1024);
 }
