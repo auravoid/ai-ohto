@@ -29,5 +29,13 @@
 	"start": "yarn build && node .",
 	"lint": "prettier --check src/**/*.{ts,js,json}",
 	"lint:fix": "prettier --write src/**/*.{ts,js,json}"
-  }
+  },
+  "repository": {
+	"type": "git",
+	"url": "git+https://github.com/auravoid/ai-ohto.git"
+  },
+  "bugs": {
+	"url": "https://github.com/auravoid/ai-ohto/issues"
+  },
+  "homepage": "https://github.com/auravoid/ai-ohto"
 }
