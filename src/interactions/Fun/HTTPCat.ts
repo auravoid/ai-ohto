@@ -2,7 +2,6 @@ import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
     ChatInputCommandInteraction,
-    Client,
     EmbedBuilder,
 } from 'discord.js';
 import { Command } from '@/Command';

@@ -1,4 +1,4 @@
-import type { ApplicationCommandData, Client } from 'discord.js';
+import type { ApplicationCommandData } from 'discord.js';
 import { CommandInteraction } from 'discord.js';
 
 export type Command = ApplicationCommandData & {

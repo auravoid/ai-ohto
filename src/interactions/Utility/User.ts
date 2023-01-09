@@ -5,7 +5,6 @@ import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
     ChatInputCommandInteraction,
-    Client,
     ColorResolvable,
     EmbedBuilder,
 } from 'discord.js';
