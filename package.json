@@ -1,10 +1,12 @@
 {
   "dependencies": {
 	"discord.js": "^14.7.1",
+	"he": "^1.2.0",
 	"node-fetch-native": "^1.0.1",
 	"uwuifier": "^4.0.5"
   },
   "devDependencies": {
+	"@types/he": "^1.1.2",
 	"@types/node": "^18.11.18",
 	"dotenv": "^16.0.3",
 	"nodemon": "^2.0.20",
