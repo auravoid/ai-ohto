@@ -5,10 +5,8 @@ export async function* globScripts(path: string): AsyncGenerator<string> {
     const files = await readdir(path, { withFileTypes: true });
     for (const file of files) {
         const childPath = join(path, file.name);
-        if (file.isDirectory()) {
+        if (file.isDirectory() && file.name !== 'Debug') {
             yield* globScripts(childPath);
-        } else if (childPath.includes('Debug\\')) {
-            return;
         } else if (file.name.endsWith('.js') || file.name.endsWith('.ts')) {
             yield childPath;
         }
