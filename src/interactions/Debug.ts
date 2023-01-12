@@ -30,11 +30,20 @@ export const Debug: Command = {
                 await import('./Debug/about').then((module) => {
                     module.default(interaction);
                 });
+                break;
             }
             case 'guilds': {
                 await import('./Debug/guilds').then((module) => {
                     module.default(interaction);
                 });
+                break;
+            }
+            default: {
+                await interaction.followUp({
+                    ephemeral: true,
+                    content: 'Something went wrong.',
+                });
+                break;
             }
         }
     },

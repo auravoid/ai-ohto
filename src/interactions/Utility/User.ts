@@ -53,7 +53,11 @@ export const User: Command = {
                 value: userFetch
                     .flags!.toArray()
                     .map((r) => {
-                        return `${UserData.flags[r].name}`;
+                        return `${
+                            UserData.flags[r].emoji +
+                            ' - ' +
+                            UserData.flags[r].name
+                        }`;
                     })
                     .join('\n '),
                 inline: false,

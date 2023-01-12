@@ -6,9 +6,17 @@ import {
 } from 'discord.js';
 import { execSync } from 'child_process';
 import { getCpuPercentage, getMemory, prettyDate } from '@helpers/Functions';
+import { Commands } from '@/Commands';
 
+const { homepage } = require('@/../package.json');
 const { BOT_COLOR } = process.env;
 export const gitHash = execSync('git rev-parse --short HEAD', {
+    encoding: 'utf-8',
+}).trim();
+export const gitDate = execSync('git show -s --format=%ci', {
+    encoding: 'utf-8',
+}).trim();
+export const gitMessage = execSync('git show -s --format=%s', {
     encoding: 'utf-8',
 }).trim();
 
@@ -18,6 +26,11 @@ export default async function (
     const embed = new EmbedBuilder()
         .setTitle('Debug Information')
         .addFields(
+            {
+                name: 'Command Count',
+                value: `${(await Commands).length}`,
+                inline: true,
+            },
             {
                 name: 'Guild Count',
                 value: `${(await interaction.client.guilds.fetch()).size}`,
@@ -29,11 +42,6 @@ export default async function (
                     (a: number, b: Guild) => a + b.memberCount,
                     0
                 )}`,
-                inline: true,
-            },
-            {
-                name: 'Commit Hash',
-                value: `\`${gitHash}\``,
                 inline: true,
             },
             {
@@ -64,6 +72,21 @@ export default async function (
             {
                 name: 'CPU Usage',
                 value: `${getCpuPercentage().toFixed(2)}%`,
+                inline: true,
+            },
+            {
+                name: 'Commit Hash',
+                value: `[\`${gitHash}\`](${homepage + '/commit/' + gitHash})`,
+                inline: true,
+            },
+            {
+                name: 'Commit Date',
+                value: `\`${gitDate}\``,
+                inline: true,
+            },
+            {
+                name: 'Commit Message',
+                value: `\`${gitMessage}\``,
                 inline: true,
             }
         )

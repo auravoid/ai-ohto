@@ -42,64 +42,82 @@ export const UserData = {
     flags: {
         ActiveDeveloper: {
             name: 'Active Developer',
+            emoji: '<:activedev:1062945954468208681>',
         },
         BotHTTPInteractions: {
             name: 'Bot HTTP Interactions',
             description:
                 'Bot uses only HTTP interactions and is shown in the online member list',
+            emoji: '<:botTag:230105988211015680>',
         },
         BugHunterLevel1: {
             name: 'Level 1 Bug Hunter',
+            emoji: '<:bughunter:585765206769139723>',
         },
         BugHunterLevel2: {
             name: 'Level 2 Bug Hunter',
+            emoji: '<:goldbughunter:853274684337946648>',
         },
         CertifiedModerator: {
             name: 'Discord Certified Moderator',
+            emoji: '<:certifiedmod:853274382339670046>',
         },
         HypeSquadOnlineHouse1: {
             name: 'House Bravery Member',
+            emoji: '<:bravery:585763004218343426>',
         },
         HypeSquadOnlineHouse2: {
             name: 'House Brilliance Member',
+            emoji: '<:brilliance:585763004495298575>',
         },
         HypeSquadOnlineHouse3: {
             name: 'House Balance Member',
+            emoji: '<:balance:585763004574859273>',
         },
         Hypesquad: {
             name: 'HypeSquad Events Member',
+            emoji: '<:hypesquad_events:585765895939424258>',
         },
         Partner: {
             name: 'Partnered Server Owner',
+            emoji: '<:partnernew:754032603081998336>',
         },
         PremiumEarlySupporter: {
             name: 'Early Nitro Supporter',
+            emoji: '<:supporter:585763690868113455>',
         },
         Quarantined: {
             name: 'Quarantined',
+            emoji: '<:blank:1062948700915253288>',
             description:
                 'User’s account has been quarantined based on recent activity',
         },
         Spammer: {
             name: 'Spammer',
+            emoji: '<:blank:1062948700915253288>',
             description: 'User has been identified as spammer',
         },
         Staff: {
             name: 'Discord Employee',
+            emoji: '<:stafftools:314348604095594498>',
         },
         TeamPseudoUser: {
             name: 'Discord Team',
+            emoji: '<:blank:1062948700915253288>',
         },
         VerifiedBot: {
             name: 'Verified Bot',
+            emoji: '<:blank:1062948700915253288>',
         },
         VerifiedDeveloper: {
             name: 'Early Verified Bot Developer',
+            emoji: '<:verifiedbotdev:853277205264859156>',
         },
     } satisfies {
         [key in keyof typeof UserFlags]: {
             name: string;
             description?: string;
+            emoji: string;
         };
     },
     premiumTypes: [
