@@ -1,4 +1,5 @@
 import os from 'os';
+import { config } from 'dotenv';
 
 /**
  *
@@ -188,4 +189,15 @@ export function getMemory() {
  */
 export function prettyNumber(uglyNumber: number): string {
     return uglyNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+/**
+ * @description - A function to clean eval strings
+ * @param text {string} - The string to clean
+ * @returns {string} - The cleaned string
+ */
+export function clean(text: string): string {
+    // TODO: this
+
+    return text;
 }
