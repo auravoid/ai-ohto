@@ -3,6 +3,7 @@ import { Client } from 'discord.js';
 import { Commands } from '@/Commands';
 import { postCommands } from '@/helpers/CommandPost';
 import { postUptime } from '@/helpers/Uptime';
+import { postBotStats } from '@/helpers/PostStats';
 
 const { BOT_HOME_GUILD } = process.env;
 
@@ -29,4 +30,10 @@ export default async function onceReady(client: Client) {
     setInterval(async () => {
         await postUptime(client.ws.ping);
     }, 30 * 1000);
+
+    if (process.env.NODE_ENV === 'production') {
+        setInterval(async () => {
+            await postBotStats(client);
+        }, 30 * 60 * 1000);
+    }
 }
