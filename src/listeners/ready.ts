@@ -1,6 +1,8 @@
 import Status from '@helpers/SetStatus';
 import { Client } from 'discord.js';
 import { Commands } from '@/Commands';
+import { postCommands } from '@/helpers/CommandPost';
+import { postUptime } from '@/helpers/Uptime';
 
 const { BOT_HOME_GUILD } = process.env;
 
@@ -18,7 +20,13 @@ export default async function onceReady(client: Client) {
 
     await client.application.commands.set(globalCommands);
 
+    await postCommands();
+
     await Status(client);
 
     console.log(`${client.user.username} is online`);
+
+    setInterval(async () => {
+        await postUptime(client.ws.ping);
+    }, 30 * 1000);
 }
