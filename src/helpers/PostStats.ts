@@ -4,6 +4,8 @@ import { Client } from 'discord.js';
 const { KEY_STATCORD, KEY_TOPGG, KEY_BOTSGG, KEY_INFINITY } = process.env;
 
 export async function postBotStats(client: Client) {
+    const guilds = client.guilds.cache.size;
+
     await fetch(
         'https://discord.bots.gg/api/v1/bots/847427963032174613/stats',
         {
@@ -13,7 +15,7 @@ export async function postBotStats(client: Client) {
                 Authorization: KEY_BOTSGG as string,
             },
             body: JSON.stringify({
-                guildCount: client.guilds.cache.size,
+                guildCount: guilds,
             }),
         }
     );
@@ -25,7 +27,7 @@ export async function postBotStats(client: Client) {
             Authorization: KEY_TOPGG as string,
         },
         body: JSON.stringify({
-            server_count: client.guilds.cache.size,
+            server_count: guilds,
         }),
     });
     await fetch('https://statcord.com/bot/847427963032174613', {
@@ -35,7 +37,7 @@ export async function postBotStats(client: Client) {
             Authorization: KEY_STATCORD as string,
         },
         body: JSON.stringify({
-            server_count: client.guilds.cache.size,
+            server_count: guilds,
         }),
     });
     await fetch(
@@ -47,7 +49,7 @@ export async function postBotStats(client: Client) {
                 Authorization: KEY_INFINITY as string,
             },
             body: JSON.stringify({
-                server_count: client.guilds.cache.size,
+                server_count: guilds,
             }),
         }
     );
