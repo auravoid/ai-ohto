@@ -7,7 +7,7 @@ export async function postBotStats(client: Client) {
     const guilds = client.guilds.cache.size;
 
     await fetch(
-        'https://discord.bots.gg/api/v1/bots/847427963032174613/stats',
+        `https://discord.bots.gg/api/v1/bots/${client.user?.id}/stats`,
         {
             method: 'POST',
             headers: {
@@ -20,7 +20,7 @@ export async function postBotStats(client: Client) {
         }
     );
 
-    await fetch('https://top.gg/api/bots/847427963032174613/stats', {
+    await fetch(`https://top.gg/api/bots/${client.user?.id}/stats`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ export async function postBotStats(client: Client) {
             server_count: guilds,
         }),
     });
-    await fetch('https://statcord.com/bot/847427963032174613', {
+    await fetch(`https://statcord.com/bot/${client.user?.id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export async function postBotStats(client: Client) {
         }),
     });
     await fetch(
-        'https://infinitybotlist.com/api/bots/847427963032174613/stats',
+        `https://infinitybotlist.com/api/bots/${client.user?.id}/stats`,
         {
             method: 'POST',
             headers: {
