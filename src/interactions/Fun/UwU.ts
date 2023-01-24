@@ -8,6 +8,7 @@ import Uwuifier from 'uwuifier';
 
 export const UwU: Command = {
     name: 'uwu',
+    category: 'Fun',
     description: 'UwU~',
     type: ApplicationCommandType.ChatInput,
     options: [

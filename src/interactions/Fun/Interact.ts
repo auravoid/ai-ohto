@@ -12,6 +12,7 @@ const { KEY_WEEBYAPI, BOT_COLOR } = process.env;
 
 export const Interact: Command = {
     name: 'interact',
+    category: 'Fun',
     description:
         'Interact with another user using a variety of different interactions.',
     options: [

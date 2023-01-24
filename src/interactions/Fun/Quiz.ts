@@ -18,6 +18,7 @@ const { BOT_COLOR } = process.env;
 
 export const Quiz: Command = {
     name: 'quiz',
+    category: 'Fun',
     description: 'Generate a trivia quiz just for you!',
     options: [
         {

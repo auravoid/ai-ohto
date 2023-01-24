@@ -6,6 +6,7 @@ import {
 
 export const GetUser: Command = {
     name: 'Get User',
+    category: 'Menu',
     type: ApplicationCommandType.User,
     run: async (interaction: ContextMenuCommandInteraction) => {
         await interaction.followUp({

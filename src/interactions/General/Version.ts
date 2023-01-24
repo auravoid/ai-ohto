@@ -17,6 +17,7 @@ const { BOT_COLOR } = process.env;
 
 export const Version: Command = {
     name: 'version',
+    category: 'General',
     description: "Check the bot's version.",
     type: ApplicationCommandType.ChatInput,
     run: async (interaction: ChatInputCommandInteraction) => {

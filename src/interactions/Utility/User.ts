@@ -13,6 +13,7 @@ const { BOT_COLOR } = process.env;
 
 export const User: Command = {
     name: 'user',
+    category: 'Utility',
     description: "Get a user's information",
     type: ApplicationCommandType.ChatInput,
     options: [

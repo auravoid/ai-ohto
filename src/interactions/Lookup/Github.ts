@@ -10,6 +10,7 @@ const octokit = new Octokit({ 'user-agent': 'https://auravoid.dev/' });
 
 export const Github: Command = {
     name: 'github',
+    category: 'Lookup',
     description: 'Lookup a Github user or repository',
     type: ApplicationCommandType.ChatInput,
     options: [

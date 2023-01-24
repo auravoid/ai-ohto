@@ -6,6 +6,7 @@ import { Command } from '@/Command';
 
 export const Coinflip: Command = {
     name: 'coinflip',
+    category: 'Fun',
     description: 'Heads or Tails?',
     type: ApplicationCommandType.ChatInput,
     run: async (interaction: ChatInputCommandInteraction) => {

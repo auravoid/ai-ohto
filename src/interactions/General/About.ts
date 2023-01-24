@@ -11,6 +11,7 @@ const { BOT_COLOR, RAILWAY_GIT_COMMIT_SHA } = process.env;
 
 export const About: Command = {
     name: 'about',
+    category: 'General',
     description: 'Get some details about the bot.',
     type: ApplicationCommandType.ChatInput,
     run: async (interaction: ChatInputCommandInteraction) => {

@@ -9,6 +9,7 @@ import fetch from 'node-fetch-native';
 
 export const Horoscope: Command = {
     name: 'horoscope',
+    category: 'Lookup',
     description: 'Lookup your horoscope for the day',
     type: ApplicationCommandType.ChatInput,
     options: [

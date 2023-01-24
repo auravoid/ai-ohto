@@ -9,6 +9,7 @@ import fetch from 'node-fetch-native';
 
 export const Chat: Command = {
     name: 'chat',
+    category: 'Fun',
     description: 'Send messages into the chat',
     options: [
         {

@@ -16,6 +16,7 @@ const httpCodes = [
 
 export const HTTPCat: Command = {
     name: 'httpcat',
+    category: 'Fun',
     description: 'Get a random HTTP cat or look up a specific one!',
     options: [
         {

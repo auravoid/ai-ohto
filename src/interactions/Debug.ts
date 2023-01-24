@@ -7,6 +7,7 @@ import { Command } from '@/Command';
 
 export const Debug: Command = {
     name: 'debug',
+    category: 'Debug',
     description: 'Debug commands for authorized users',
     guildOnly: true,
     options: [
@@ -22,29 +23,33 @@ export const Debug: Command = {
             type: ApplicationCommandOptionType.Subcommand,
             options: [],
         },
+        {
+            name: 'eval',
+            description: 'Evaluate JavaScript code',
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [
+                {
+                    name: 'code',
+                    description: 'The code to evaluate',
+                    type: ApplicationCommandOptionType.String,
+                    required: true,
+                },
+            ],
+        },
     ],
     type: ApplicationCommandType.ChatInput,
     run: async (interaction: ChatInputCommandInteraction) => {
-        switch (interaction.options.getSubcommand()) {
-            case 'about': {
-                await import('./Debug/about').then((module) => {
+        try {
+            await import(`./Debug/${interaction.options.getSubcommand()}`).then(
+                (module) => {
                     module.default(interaction);
-                });
-                break;
-            }
-            case 'guilds': {
-                await import('./Debug/guilds').then((module) => {
-                    module.default(interaction);
-                });
-                break;
-            }
-            default: {
-                await interaction.followUp({
-                    ephemeral: true,
-                    content: 'Something went wrong.',
-                });
-                break;
-            }
+                }
+            );
+        } catch (error) {
+            await interaction.followUp({
+                ephemeral: true,
+                content: 'Something went wrong.',
+            });
         }
     },
 };

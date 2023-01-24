@@ -10,6 +10,7 @@ import { prettyNumber } from '@helpers/Functions';
 
 export const Twitter: Command = {
     name: 'twitter',
+    category: 'Fun',
     description: 'Create a fake Twitter embed!',
     options: [
         {

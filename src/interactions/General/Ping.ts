@@ -10,6 +10,7 @@ const { BOT_COLOR } = process.env;
 
 export const Ping: Command = {
     name: 'ping',
+    category: 'General',
     description: 'Replies with some ping information.',
     type: ApplicationCommandType.ChatInput,
     run: async (interaction: ChatInputCommandInteraction) => {

@@ -9,6 +9,7 @@ import fetch from 'node-fetch-native';
 
 export const Domain: Command = {
     name: 'domain',
+    category: 'Lookup',
     description: 'Lookup a domain name',
     type: ApplicationCommandType.ChatInput,
     options: [

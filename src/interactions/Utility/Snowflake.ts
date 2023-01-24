@@ -9,6 +9,7 @@ import { idToTimestamp } from '@helpers/Functions';
 
 export const Snowflake: Command = {
     name: 'snowflake',
+    category: 'Utility',
     description: 'Convert a snowflake ID to a date.',
     type: ApplicationCommandType.ChatInput,
     options: [

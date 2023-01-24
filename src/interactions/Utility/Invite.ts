@@ -13,6 +13,7 @@ const { BOT_COLOR } = process.env;
 
 export const Invite: Command = {
     name: 'invite',
+    category: 'General',
     description: 'Get information about an invite link',
     type: ApplicationCommandType.ChatInput,
     options: [
