@@ -18,11 +18,13 @@ export const CommandList: Command = {
         let commandString = '';
 
         const categories = new Set(
-            (await Commands).filter(
-                (command) =>
-                    !command.guildOnly && command.type === ApplicationCommandType.ChatInput
-            )
-            .map((command) => command.category)
+            (await Commands)
+                .filter(
+                    (command) =>
+                        !command.guildOnly &&
+                        command.type === ApplicationCommandType.ChatInput
+                )
+                .map((command) => command.category)
         );
 
         for (const category of categories) {
