@@ -1,5 +1,4 @@
 import os from 'os';
-import { config } from 'dotenv';
 
 /**
  *
@@ -60,7 +59,7 @@ export function idToTimestamp(id: number, type: string) {
     const epoch = 1420070400000;
     const date = BigInt(id) >> 22n;
     const timestamp = Math.floor(
-        (new Date(Number(date) + epoch) as unknown as number) / 1000
+        (Number(date) + epoch)  / 1000
     );
 
     // Return the timestamp
