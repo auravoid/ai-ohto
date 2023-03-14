@@ -58,9 +58,7 @@ export function idToTimestamp(id: number, type: string) {
 
     const epoch = 1420070400000;
     const date = BigInt(id) >> 22n;
-    const timestamp = Math.floor(
-        (Number(date) + epoch)  / 1000
-    );
+    const timestamp = Math.floor((Number(date) + epoch) / 1000);
 
     // Return the timestamp
     switch (type) {

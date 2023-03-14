@@ -9,12 +9,13 @@ export async function postCommands() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-Custom-Auth-Key': KEY_CDN as string,
+            'X-Authorization': KEY_CDN as string,
         },
         body: data,
     }).then((res) => {
-        if (!res.ok) {
+        if (res.status !== 200) {
             console.error('Failed to post commands to the CDN!');
+            console.error(res);
         }
     });
 

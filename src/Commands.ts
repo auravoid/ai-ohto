@@ -1,6 +1,6 @@
 import { basename, join } from 'path';
 import type { Command } from './Command';
-import { mapScripts } from './helpers/glob';
+import { mapScripts } from '@helpers/glob';
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord.js';
 

@@ -36,6 +36,51 @@ export const Debug: Command = {
                 },
             ],
         },
+        {
+            name: 'kill',
+            description: 'Kill the bot',
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [],
+        },
+        {
+            name: 'fetchredis',
+            description: 'Fetch something in the Redis database',
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [
+                {
+                    name: 'key',
+                    description: 'The key to fetch',
+                    type: ApplicationCommandOptionType.String,
+                    required: true,
+                },
+            ],
+        },
+        {
+            name: 'promote',
+            description: 'Add user to list of authorized users',
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [
+                {
+                    name: 'user',
+                    description: 'The user to promote',
+                    type: ApplicationCommandOptionType.User,
+                    required: true,
+                },
+            ],
+        },
+        {
+            name: 'demote',
+            description: 'Remove user from list of authorized users',
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [
+                {
+                    name: 'user',
+                    description: 'The user to demote',
+                    type: ApplicationCommandOptionType.User,
+                    required: true,
+                },
+            ],
+        },
     ],
     type: ApplicationCommandType.ChatInput,
     run: async (interaction: ChatInputCommandInteraction) => {

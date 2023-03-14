@@ -6,6 +6,7 @@ import {
     ColorResolvable,
     EmbedBuilder,
     StringSelectMenuBuilder,
+    TextChannel,
 } from 'discord.js';
 import { Command } from '@/Command';
 import fetch from 'node-fetch-native';
@@ -220,7 +221,9 @@ export const Quiz: Command = {
         });
 
         const filter = (i: any) => i.customId === 'quiz';
-        const collector = interaction.channel?.createMessageComponentCollector({
+        const collector = (
+            interaction.channel as TextChannel
+        )?.createMessageComponentCollector({
             filter,
             time: 15000,
         });
