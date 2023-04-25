@@ -1,43 +1,43 @@
 {
-  "dependencies": {
-    "discord.js": "^14.7.1",
-    "he": "^1.2.0",
-    "node-fetch-native": "^1.0.1",
-    "octokit": "^2.0.11",
-    "redis": "^4.6.5",
-    "uwuifier": "^4.0.5"
-  },
-  "devDependencies": {
-    "@types/he": "^1.1.2",
-    "@types/node": "^18.11.18",
-    "dotenv": "^16.0.3",
-    "nodemon": "^2.0.20",
-    "prettier": "^2.8.1",
-    "source-map-support": "^0.5.21",
-    "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.1.2",
-    "typescript": "^4.9.4"
-  },
-  "name": "ai-ohto",
-  "version": "4.0.0",
-  "description": "Ai Ohto as a bot.",
-  "main": "dist/Bot.js",
-  "author": "auravoid",
-  "license": "BSD-3-Clause",
-  "private": true,
-  "scripts": {
-    "build": "tsc",
-    "dev": "nodemon src/Bot.ts",
-    "start": "yarn build && node .",
-    "lint": "prettier --check src/**/*.{ts,js,json}",
-    "lint:fix": "prettier --write src/**/*.{ts,js,json}"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/auravoid/ai-ohto.git"
-  },
-  "bugs": {
-    "url": "https://github.com/auravoid/ai-ohto/issues"
-  },
-  "homepage": "https://github.com/auravoid/ai-ohto"
+    "dependencies": {
+        "discord.js": "^14.7.1",
+        "he": "^1.2.0",
+        "node-fetch-native": "^1.0.1",
+        "octokit": "^2.0.11",
+        "redis": "^4.6.5",
+        "uwuifier": "^4.0.5"
+    },
+    "devDependencies": {
+        "@types/he": "^1.1.2",
+        "@types/node": "^18.11.18",
+        "dotenv": "^16.0.3",
+        "nodemon": "^2.0.20",
+        "prettier": "^2.8.1",
+        "source-map-support": "^0.5.21",
+        "ts-node": "^10.9.1",
+        "tsconfig-paths": "^4.1.2",
+        "typescript": "^4.9.4"
+    },
+    "name": "ai-ohto",
+    "version": "4.0.0",
+    "description": "Ai Ohto as a bot.",
+    "main": "dist/Bot.js",
+    "author": "auravoid",
+    "license": "BSD-3-Clause",
+    "private": true,
+    "scripts": {
+        "build": "tsc",
+        "dev": "nodemon --delay 5 src/Bot.ts",
+        "start": "yarn build && node .",
+        "lint": "prettier --check src/**/*.{ts,js,json}",
+        "lint:fix": "prettier --write src/**/*.{ts,js,json}"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/auravoid/ai-ohto.git"
+    },
+    "bugs": {
+        "url": "https://github.com/auravoid/ai-ohto/issues"
+    },
+    "homepage": "https://github.com/auravoid/ai-ohto"
 }

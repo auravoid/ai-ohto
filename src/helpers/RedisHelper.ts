@@ -104,16 +104,15 @@ export async function search(key: string) {
     return response;
 }
 
-
 /**
- * 
+ *
  * @description - Helper to get a JSON object from redis
  * @param {string} key - The key to get
  * @returns {object} - The JSON object
  */
 export async function getJSON(key: string) {
-    const value = await client
-        .json.get(`bot:${key}`)
+    const value = await client.json
+        .get(`bot:${key}`)
         .then((res) => {
             return res;
         })
@@ -124,15 +123,15 @@ export async function getJSON(key: string) {
 }
 
 /**
- * 
+ *
  * @description - Helper to set a JSON object in redis
  * @param {string} key - The key to set
  * @param {object} value - The JSON object to set
  * @returns {object} - The JSON object
  */
 export async function setJSON(key: string, value: object) {
-    const response = await client
-        .json.set(`bot:${key}`, `.`, value as any)
+    const response = await client.json
+        .set(`bot:${key}`, `.`, value as any)
         .then((res) => {
             return res;
         })

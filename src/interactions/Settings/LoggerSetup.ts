@@ -11,11 +11,7 @@ import {
 import { Command } from '@/Command';
 import { set, get } from '@/helpers/RedisHelper';
 
-const {
-    COLOR_SUCCESS,
-    COLOR_WARNING,
-    COLOR_ERROR
-} = process.env;
+const { COLOR_SUCCESS, COLOR_WARNING, COLOR_ERROR } = process.env;
 
 export const LoggerSetup: Command = {
     name: 'logger-setup',
@@ -27,7 +23,7 @@ export const LoggerSetup: Command = {
             name: 'log-channel',
             description: 'The channel to send logs to',
             type: ApplicationCommandOptionType.Channel,
-            required: false,
+            required: true,
         },
     ],
     async run(interaction: ChatInputCommandInteraction) {
@@ -44,16 +40,22 @@ export const LoggerSetup: Command = {
         if (logChannelType !== ChannelType.GuildText) {
             const embed = new EmbedBuilder()
                 .setTitle('Logger Setup')
-                .setDescription('Please provide a text channel to send logs to.')
+                .setDescription(
+                    'Please provide a text channel to send logs to.'
+                )
                 .setColor(COLOR_WARNING as ColorResolvable);
             return interaction.followUp({ embeds: [embed] });
         }
 
-        const botPermissions = (logChannel as GuildChannel).permissionsFor(interaction.client.user.id);
+        const botPermissions = (logChannel as GuildChannel).permissionsFor(
+            interaction.client.user.id
+        );
         if (!botPermissions?.has(PermissionsBitField.Flags.SendMessages)) {
             const embed = new EmbedBuilder()
                 .setTitle('Logger Setup')
-                .setDescription('I do not have permission to send messages in that channel.')
+                .setDescription(
+                    'I do not have permission to send messages in that channel.'
+                )
                 .setColor(COLOR_ERROR as ColorResolvable);
             return interaction.followUp({ embeds: [embed] });
         }
@@ -63,8 +65,10 @@ export const LoggerSetup: Command = {
 
         const embed = new EmbedBuilder()
             .setTitle('Logger Setup')
-            .setDescription(`Successfully set log channel to <#${logChannelId}>`)
+            .setDescription(
+                `Successfully set log channel to <#${logChannelId}>`
+            )
             .setColor(COLOR_SUCCESS as ColorResolvable);
         return interaction.followUp({ embeds: [embed] });
-    }
-}
+    },
+};

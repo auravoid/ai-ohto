@@ -93,7 +93,7 @@ export const Debug: Command = {
                     required: false,
                 },
             ],
-        }
+        },
     ],
     type: ApplicationCommandType.ChatInput,
     run: async (interaction: ChatInputCommandInteraction) => {

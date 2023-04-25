@@ -7,7 +7,7 @@ export default async function (
     const command = interaction.options.getString('command');
     const commandUsage: any = await getJSON('commandUsage');
     const embed = new EmbedBuilder().setTitle('Command Usage');
-    
+
     if (!commandUsage) {
         await interaction.followUp({
             content: 'No commands have been used yet.',
@@ -17,14 +17,23 @@ export default async function (
     }
 
     if (!command) {
-        embed.setDescription('```' + commandUsage.map((c: any) => `\`${c.name}\` - ${c.usage}`).join('\n') + '```');
+        embed.setDescription(
+            '```' +
+                commandUsage
+                    .map((c: any) => `\`${c.name}\` - ${c.usage}`)
+                    .join('\n') +
+                '```'
+        );
     }
 
     if (command) {
         const commandIndex = commandUsage.findIndex(
-            (c: { name: any }) => c.name === command);
+            (c: { name: any }) => c.name === command
+        );
         if (commandIndex !== -1) {
-            embed.setDescription(`\`${command}\` has been used ${commandUsage[commandIndex].usage} times.`);
+            embed.setDescription(
+                `\`${command}\` has been used ${commandUsage[commandIndex].usage} times.`
+            );
         } else {
             embed.setDescription(`\`${command}\` has not been used yet.`);
         }

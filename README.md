@@ -37,5 +37,5 @@ I'm aware.
 
 Some special thanks for the following:
 
-- [FloatingMilkshake](https://github.com/FloatingMilkshake)
-- [Vendicated](https://github.com/Vendicated/)
+-   [FloatingMilkshake](https://github.com/FloatingMilkshake)
+-   [Vendicated](https://github.com/Vendicated/)

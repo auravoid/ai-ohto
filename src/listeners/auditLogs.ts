@@ -1,13 +1,8 @@
 import { Client, ColorResolvable, EmbedBuilder, TextChannel } from 'discord.js';
-import {
-    get
-} from '@/helpers/RedisHelper';
-const {
-    COLOR_WARNING,
-    COLOR_ERROR,
-} = process.env;
+import { get } from '@/helpers/RedisHelper';
+const { COLOR_WARNING, COLOR_ERROR } = process.env;
 
-export default async function auditLogs (client: Client) {
+export default async function auditLogs(client: Client) {
     await readLogs(client);
 }
 
@@ -37,8 +32,10 @@ export async function readLogs(client: Client) {
             )
             .setColor(COLOR_ERROR as ColorResolvable);
 
-        const logChannel = await client.channels.fetch(logChannelId).catch(() => {});
-        (logChannel as TextChannel)?.send({embeds: [embed]}).catch(() => {});
+        const logChannel = await client.channels
+            .fetch(logChannelId)
+            .catch(() => {});
+        (logChannel as TextChannel)?.send({ embeds: [embed] }).catch(() => {});
     });
 
     client.on('messageUpdate', async (oldMessage, newMessage) => {
@@ -76,7 +73,9 @@ export async function readLogs(client: Client) {
             )
             .setColor(COLOR_WARNING as ColorResolvable);
 
-        const logChannel = await client.channels.fetch(logChannelId).catch(() => {});
-        (logChannel as TextChannel)?.send({embeds: [embed]}).catch(() => {});
+        const logChannel = await client.channels
+            .fetch(logChannelId)
+            .catch(() => {});
+        (logChannel as TextChannel)?.send({ embeds: [embed] }).catch(() => {});
     });
 }

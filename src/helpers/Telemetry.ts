@@ -1,6 +1,5 @@
 const { getJSON, setJSON } = require('@helpers/RedisHelper');
 
-
 export async function analytics(command: any) {
     const commandUsage = await getJSON('commandUsage');
     const commandId = command.name;
