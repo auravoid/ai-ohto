@@ -7,6 +7,7 @@ import {
 } from 'discord.js';
 import { CommandMap } from '@/Commands';
 import { onError } from '@/helpers/Sender';
+import { analytics } from '@/helpers/Telemetry';
 
 const { BOT_SERVER } = process.env;
 
@@ -34,6 +35,7 @@ const handleSlashCommand = async (
     await interaction.deferReply();
 
     try {
+        await analytics(cmd);
         await cmd.run(interaction);
     } catch (err: any) {
         console.group(

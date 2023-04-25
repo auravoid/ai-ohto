@@ -1,4 +1,9 @@
-import { ChatInputCommandInteraction } from 'discord.js';
+import { ChatInputCommandInteraction, EmbedBuilder, TextChannel } from 'discord.js';
+
+const {
+    BOT_HOME_CHANNEL,
+    BOT_HOME_GUILD,
+}= process.env;
 
 export default async function (
     interaction: ChatInputCommandInteraction
@@ -9,6 +14,16 @@ export default async function (
             ephemeral: true,
         });
     } else {
+
+        let homeGuild = await interaction.client.guilds.fetch(BOT_HOME_GUILD as string);
+        let homeChannel = await homeGuild.channels.fetch(BOT_HOME_CHANNEL as string);
+        const embed = new EmbedBuilder()
+            .setTitle('Shutdown Initiated')
+            .setDescription(`Shutting down at the request of ${interaction.user.username}#${interaction.user.discriminator}`)
+            .setColor('#FE2E2E');
+        
+        await (homeChannel as TextChannel).send({ embeds: [embed] });
+
         await interaction.followUp({
             content: "I'm gonna kill myself now.",
             ephemeral: true,

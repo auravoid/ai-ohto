@@ -4,6 +4,8 @@ import { Commands } from '@/Commands';
 import { postCommands } from '@/helpers/CommandPost';
 import { postUptime } from '@/helpers/Uptime';
 import { postBotStats } from '@/helpers/PostStats';
+import auditLogs from './auditLogs';
+
 
 const { BOT_HOME_GUILD } = process.env;
 
@@ -24,6 +26,8 @@ export default async function onceReady(client: Client) {
     await postCommands();
 
     await Status(client);
+
+    await auditLogs(client);
 
     console.log(`${client.user.username} is online`);
 

@@ -3,14 +3,18 @@ import './bootstrap';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { basename, join } from 'path';
 import './helpers/glob';
-import { mapScripts } from './helpers/glob';
+import { mapScripts } from '@helpers/glob';
 
 const { BOT_TOKEN } = process.env;
 
 console.log('Bot is starting...');
 
 const client = new Client({
-    intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMembers,
+    intents:
+        GatewayIntentBits.Guilds |
+        GatewayIntentBits.GuildMembers |
+        GatewayIntentBits.GuildMessages |
+        GatewayIntentBits.MessageContent,
 });
 
 mapScripts(join(__dirname, 'listeners'), async (file) => {
@@ -28,6 +32,6 @@ mapScripts(join(__dirname, 'listeners'), async (file) => {
         basename(file).slice(0, -3),
         listener.bind(null, client)
     );
-});
+}).catch(console.error);
 
 client.login(BOT_TOKEN).catch(console.error);
