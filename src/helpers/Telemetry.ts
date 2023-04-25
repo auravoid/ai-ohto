@@ -1,7 +1,8 @@
-const { get, set } = require('@helpers/RedisHelper');
+const { getJSON, setJSON } = require('@helpers/RedisHelper');
+
 
 export async function analytics(command: any) {
-    const commandUsage = await get('commandCount');
+    const commandUsage = await getJSON('commandUsage');
     const commandId = command.name;
 
     if (!commandUsage) {
@@ -9,24 +10,22 @@ export async function analytics(command: any) {
             name: commandId,
             usage: 1,
         };
-        await set('commandCount', JSON.stringify([newCommand]));
+        await setJSON('commandUsage', [newCommand]);
         return;
     } else {
-        const parsedCommandUsage = JSON.parse(commandUsage);
-
-        const commandIndex = parsedCommandUsage.findIndex(
+        const commandIndex = commandUsage.findIndex(
             (c: { name: any }) => c.name === commandId
         );
         if (commandIndex !== -1) {
-            parsedCommandUsage[commandIndex].usage++;
+            commandUsage[commandIndex].usage++;
         } else {
             const newCommand = {
                 name: commandId,
                 usage: 1,
             };
-            parsedCommandUsage.push(newCommand);
+            commandUsage.push(newCommand);
         }
 
-        await set('commandCount', JSON.stringify(parsedCommandUsage));
+        await setJSON('commandUsage', commandUsage).then(console.log);
     }
 }

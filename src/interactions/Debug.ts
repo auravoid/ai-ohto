@@ -81,6 +81,19 @@ export const Debug: Command = {
                 },
             ],
         },
+        {
+            name: 'usage',
+            description: 'Get command usage',
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [
+                {
+                    name: 'command',
+                    description: 'The command to get usage for',
+                    type: ApplicationCommandOptionType.String,
+                    required: false,
+                },
+            ],
+        }
     ],
     type: ApplicationCommandType.ChatInput,
     run: async (interaction: ChatInputCommandInteraction) => {
