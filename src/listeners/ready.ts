@@ -5,7 +5,7 @@ import { postCommands } from '@/helpers/CommandPost';
 import { postUptime } from '@/helpers/Uptime';
 import { postBotStats } from '@/helpers/PostStats';
 import auditLogs from './auditLogs';
-
+import { onStartup } from '@/helpers/Sender';
 
 const { BOT_HOME_GUILD } = process.env;
 
@@ -29,7 +29,8 @@ export default async function onceReady(client: Client) {
 
     await auditLogs(client);
 
-    console.log(`${client.user.username} is online`);
+    console.log(`${client.user.username} is online!`);
+    await onStartup(client);
 
     setInterval(async () => {
         await postUptime(client.ws.ping);

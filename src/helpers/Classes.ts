@@ -62,6 +62,18 @@ export const UserData = {
             name: 'Discord Certified Moderator',
             emoji: '<:certifiedmod:853274382339670046>',
         },
+        Collaborator: {
+            name: 'Discord Collaborator',
+            emoji: '<:blank:1062948700915253288>',
+        },
+        DisablePremium: {
+            name: 'Disable Premium',
+            emoji: '<:blank:1062948700915253288>',
+        },
+        HasUnreadUrgentMessages: {
+            name: 'Has Unread Urgent Messages',
+            emoji: '<:blank:1062948700915253288>',
+        },
         HypeSquadOnlineHouse1: {
             name: 'House Bravery Member',
             emoji: '<:bravery:585763004218343426>',
@@ -78,6 +90,10 @@ export const UserData = {
             name: 'HypeSquad Events Member',
             emoji: '<:hypesquad_events:585765895939424258>',
         },
+        MFASMS: {
+            name: 'MFA SMS',
+            emoji: '<:blank:1062948700915253288>',
+        },
         Partner: {
             name: 'Partnered Server Owner',
             emoji: '<:partnernew:754032603081998336>',
@@ -86,11 +102,19 @@ export const UserData = {
             name: 'Early Nitro Supporter',
             emoji: '<:supporter:585763690868113455>',
         },
+        PremiumPromoDismissed: {
+            name: 'Premium Promo Dismissed',
+            emoji: '<:blank:1062948700915253288>',
+        },
         Quarantined: {
             name: 'Quarantined',
             emoji: '<:blank:1062948700915253288>',
             description:
                 'User’s account has been quarantined based on recent activity',
+        },
+        RestrictedCollaborator: {
+            name: 'Restricted Collaborator',
+            emoji: '<:blank:1062948700915253288>',
         },
         Spammer: {
             name: 'Spammer',

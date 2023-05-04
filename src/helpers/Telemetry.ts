@@ -9,7 +9,7 @@ export async function analytics(command: any) {
             name: commandId,
             usage: 1,
         };
-        await setJSON('commandUsage', [newCommand]);
+        await setJSON('commandUsage', [newCommand]).catch();
         return;
     } else {
         const commandIndex = commandUsage.findIndex(
@@ -25,6 +25,6 @@ export async function analytics(command: any) {
             commandUsage.push(newCommand);
         }
 
-        await setJSON('commandUsage', commandUsage).then(console.log);
+        await setJSON('commandUsage', commandUsage).catch();
     }
 }

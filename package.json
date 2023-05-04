@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "discord.js": "^14.7.1",
+        "discord.js": "^14.10.2",
         "he": "^1.2.0",
         "node-fetch-native": "^1.0.1",
         "octokit": "^2.0.11",

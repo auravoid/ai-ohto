@@ -21,6 +21,7 @@ export const Invite: Command = {
             name: 'code',
             description: 'The invite code to lookup',
             type: ApplicationCommandOptionType.String,
+            max_length: 512,
             required: true,
         },
     ],

@@ -17,6 +17,7 @@ export const Domain: Command = {
             name: 'domain',
             description: 'The domain name to lookup',
             type: ApplicationCommandOptionType.String,
+            max_length: 1024,
             required: true,
         },
         {

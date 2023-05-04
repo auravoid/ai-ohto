@@ -16,6 +16,7 @@ export const UwU: Command = {
             name: 'text',
             description: 'The text you want to uwu-ify.',
             type: ApplicationCommandOptionType.String,
+            max_length: 1600,
             required: true,
         },
     ],
