@@ -4,21 +4,12 @@ import {
     EmbedBuilder,
     Guild,
 } from 'discord.js';
-import { execSync } from 'child_process';
 import { getCpuPercentage, getMemory, prettyDate } from '@helpers/Functions';
 import { Commands } from '@/Commands';
 
 const { homepage } = require('@/../package.json');
-const { BOT_COLOR } = process.env;
-export const gitHash = execSync('git rev-parse --short HEAD', {
-    encoding: 'utf-8',
-}).trim();
-export const gitDate = execSync('git show -s --format=%ci', {
-    encoding: 'utf-8',
-}).trim();
-export const gitMessage = execSync('git show -s --format=%s', {
-    encoding: 'utf-8',
-}).trim();
+const { BOT_COLOR, RAILWAY_GIT_COMMIT_MESSAGE, RAILWAY_GIT_COMMIT_SHA } =
+    process.env;
 
 export default async function (
     interaction: ChatInputCommandInteraction
@@ -76,17 +67,14 @@ export default async function (
             },
             {
                 name: 'Commit Hash',
-                value: `[\`${gitHash}\`](${homepage + '/commit/' + gitHash})`,
-                inline: true,
-            },
-            {
-                name: 'Commit Date',
-                value: `\`${gitDate}\``,
+                value: `[\`${RAILWAY_GIT_COMMIT_SHA?.substring(0, 7)}\`](${
+                    homepage + '/commit/' + RAILWAY_GIT_COMMIT_SHA
+                })`,
                 inline: true,
             },
             {
                 name: 'Commit Message',
-                value: `\`${gitMessage}\``,
+                value: `\`${RAILWAY_GIT_COMMIT_MESSAGE}\``,
                 inline: true,
             }
         )
