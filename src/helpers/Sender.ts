@@ -6,19 +6,14 @@ import {
     TextChannel,
 } from 'discord.js';
 import { prettyDate } from '@helpers/Functions';
-import { execSync } from 'child_process';
-import { dateToTimestamp } from './Functions';
+const { homepage } = require('@/../package.json');
 
-const { BOT_HOME_GUILD, BOT_HOME_CHANNEL } = process.env;
-export const gitHash = execSync('git rev-parse --short HEAD', {
-    encoding: 'utf-8',
-}).trim();
-export const gitDate = execSync('git show -s --format=%ci', {
-    encoding: 'utf-8',
-}).trim();
-export const gitMessage = execSync('git show -s --format=%s', {
-    encoding: 'utf-8',
-}).trim();
+const {
+    BOT_HOME_GUILD,
+    BOT_HOME_CHANNEL,
+    RAILWAY_GIT_COMMIT_SHA,
+    RAILWAY_GIT_COMMIT_MESSAGE,
+} = process.env;
 
 export async function onStartup(client: Client): Promise<void> {
     const embed = new EmbedBuilder()
@@ -43,21 +38,14 @@ export async function onStartup(client: Client): Promise<void> {
             },
             {
                 name: 'Commit SHA',
-                value: `\`${gitHash}\``,
-                inline: true,
-            },
-            {
-                name: 'Commit Date',
-                value: `${dateToTimestamp(
-                    new Date(gitDate).getTime(),
-                    'long-date'
-                )}`,
-
+                value: `[\`${RAILWAY_GIT_COMMIT_SHA?.substring(0, 7)}\`](${
+                    homepage + '/commit/' + RAILWAY_GIT_COMMIT_SHA
+                })`,
                 inline: true,
             },
             {
                 name: 'Commit Message',
-                value: `${gitMessage}`,
+                value: `${RAILWAY_GIT_COMMIT_MESSAGE}`,
                 inline: true,
             }
         )
