@@ -8,10 +8,7 @@ import { Command } from '@/Command';
 import { execSync } from 'child_process';
 
 const { version, homepage } = require('@/../package.json');
-
-export const gitHash = execSync('git rev-parse --short HEAD', {
-    encoding: 'utf-8',
-}).trim();
+const { RAILWAY_GIT_COMMIT_SHA } = process.env;
 
 const { BOT_COLOR } = process.env;
 
@@ -29,7 +26,9 @@ export const Version: Command = {
             )
             .addFields({
                 name: 'Git Commit',
-                value: `[\`${gitHash}\`](${homepage + '/commit/' + gitHash})`,
+                value: `[\`${RAILWAY_GIT_COMMIT_SHA?.substring(0, 7)}\`](${
+                    homepage + '/commit/' + RAILWAY_GIT_COMMIT_SHA
+                })`,
             });
 
         await interaction.followUp({
