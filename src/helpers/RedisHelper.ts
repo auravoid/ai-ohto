@@ -1,10 +1,10 @@
 // Import redis and set it up
 import { createClient } from 'redis';
 
-const { REDIS_HOST, REDIS_PORT } = process.env;
+const { REDIS_HOST, REDIS_PORT, REDIS_PASSWORD } = process.env;
 
 const client = createClient({
-    url: `redis://${REDIS_HOST}:${REDIS_PORT}`,
+    url: `redis://default:${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}`,
 });
 
 client.connect();
@@ -131,7 +131,7 @@ export async function getJSON(key: string) {
  */
 export async function setJSON(key: string, value: object) {
     const response = await client.json
-        .set(`bot:${key}`, `.`, value as any)
+        .set(`bot:${key}`, `$`, value as any)
         .then((res) => {
             return res;
         })
